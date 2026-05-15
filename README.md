@@ -2,6 +2,10 @@
 
 Small public landing pages for quick sharing through GitHub Pages.
 
+Live site:
+
+- https://iamsloth.github.io/share-pages/
+
 ## Structure
 
 ```text
@@ -21,7 +25,7 @@ python -m http.server 4173
 
 Current page:
 
-- `pages/jamsil-baseball-20260522/index.html`
+- https://iamsloth.github.io/share-pages/pages/jamsil-baseball-20260522/
 
 ## Deploy
 

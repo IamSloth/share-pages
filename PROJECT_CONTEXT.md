@@ -4,7 +4,10 @@
 
 This folder is a reusable public share-page workspace. It was converted from a one-off Jamsil baseball page into a broader project on 2026-05-15 KST.
 
-No GitHub remote has been created yet unless a later session creates one.
+GitHub remote and Pages deployment are active:
+
+- Repository: `https://github.com/IamSloth/share-pages`
+- Pages root: `https://iamsloth.github.io/share-pages/`
 
 ## Current Pages
 
@@ -25,6 +28,10 @@ Known ticket info:
 - Booking fee: 4,000 KRW
 - Grand total: 100,000 KRW
 - Payment method and ticket QR details are intentionally omitted from public files.
+
+Public URL:
+
+- `https://iamsloth.github.io/share-pages/pages/jamsil-baseball-20260522/`
 
 Open questions:
 
