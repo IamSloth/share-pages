@@ -24,7 +24,7 @@ Known ticket info:
 - Ticket total: 96,000 KRW
 - Booking fee: 4,000 KRW
 - Grand total: 100,000 KRW
-- Payment method shown in screenshot: KakaoPay credit card
+- Payment method and ticket QR details are intentionally omitted from public files.
 
 Open questions:
 
@@ -40,4 +40,3 @@ Open questions:
 ```text
 이 프로젝트 이어서 pages/jamsil-baseball-20260522 랜딩페이지 완성하고 GitHub Pages 배포까지 준비해줘. AGENTS.md 먼저 읽고 진행해.
 ```
-

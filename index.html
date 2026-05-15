@@ -3,58 +3,122 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="작은 공개 공유용 랜딩페이지 모음">
   <title>Share Pages</title>
   <style>
+    :root {
+      --bg: #f4efe6;
+      --paper: #fffdf8;
+      --ink: #181614;
+      --muted: #655d55;
+      --line: #ded1c2;
+      --navy: #18213a;
+      --field: #1f6f4b;
+      --lg: #b5122c;
+      --shadow: 0 14px 34px rgba(24, 22, 20, .08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: "Pretendard", "SUIT", "Malgun Gothic", sans-serif;
-      background: #f7f3ec;
-      color: #201915;
-      letter-spacing: -0.025em;
+      font-family: "Pretendard", "SUIT", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+      letter-spacing: 0;
     }
+
     main {
-      width: min(100%, 760px);
+      width: min(100% - 32px, 780px);
       margin: 0 auto;
-      padding: 42px 20px;
+      padding: 42px 0;
     }
+
     h1 {
-      margin: 0 0 10px;
-      font-size: clamp(36px, 11vw, 72px);
-      line-height: .95;
-      letter-spacing: -0.08em;
+      margin: 0;
+      color: var(--navy);
+      font-size: 3rem;
+      line-height: 1.05;
+      letter-spacing: 0;
     }
+
     p {
-      margin: 0 0 28px;
-      color: #6d6258;
-      font-weight: 700;
+      margin: 12px 0 28px;
+      color: var(--muted);
+      font-weight: 750;
     }
-    a {
-      display: block;
+
+    .page-link {
+      display: grid;
+      gap: 8px;
       padding: 18px;
-      border: 1px solid rgba(32,25,21,.16);
-      border-radius: 20px;
-      background: #fffaf2;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
       color: inherit;
       text-decoration: none;
-      font-weight: 900;
-      box-shadow: 0 12px 30px rgba(32,25,21,.06);
+      box-shadow: var(--shadow);
     }
-    a span {
-      display: block;
-      margin-top: 4px;
-      color: #7d7166;
-      font-size: 14px;
-      font-weight: 700;
+
+    .page-link strong {
+      font-size: 1.12rem;
+      line-height: 1.3;
+    }
+
+    .page-link span {
+      color: var(--muted);
+      font-size: .94rem;
+      font-weight: 750;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #eef5ee;
+      color: var(--field);
+      font-size: .8rem;
+      font-weight: 900;
+    }
+
+    .tag.red {
+      background: #fff1f2;
+      color: var(--lg);
+    }
+
+    @media (max-width: 520px) {
+      main {
+        width: min(100% - 24px, 780px);
+        padding-top: 30px;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
     }
   </style>
 </head>
 <body>
   <main>
-    <h1>Share<br>Pages</h1>
-    <p>작고 귀여운 공유용 랜딩페이지 모음.</p>
-    <a href="./pages/jamsil-baseball-20260522/">
-      2026.05.22 잠실 직관 안내
-      <span>키움 vs LG · 잠실야구장</span>
+    <h1>Share Pages</h1>
+    <p>작고 가볍게 공유하는 공개 랜딩페이지 모음.</p>
+
+    <a class="page-link" href="./pages/jamsil-baseball-20260522/">
+      <strong>2026.05.22 잠실 키움 vs LG 직관 안내</strong>
+      <span>잠실야구장 · 18:30 · 3루 오렌지석</span>
+      <span class="tag-row" aria-label="태그">
+        <span class="tag">baseball</span>
+        <span class="tag red">share page</span>
+      </span>
     </a>
   </main>
 </body>

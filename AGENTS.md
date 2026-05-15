@@ -2,7 +2,7 @@
 
 This is a general-purpose public GitHub Pages workspace for small, cute, link-shareable pages.
 
-Think of it like the parent job-application project's `applications/` folder, but for lightweight public pages:
+Think of it like a lightweight public workspace for one-off pages:
 
 ```text
 share-pages/
@@ -14,16 +14,6 @@ share-pages/
 ├── index.html                 # optional directory page
 └── AGENTS.md
 ```
-
-## Parent Project
-
-The original assistant/project context lives here:
-
-- `C:\Users\superjk\Desktop\Job-Application-Pipeline-Desktop`
-- Toolbox: `C:\Users\superjk\Desktop\Job-Application-Pipeline-Desktop\manual\jarvis_toolbox.md`
-- GitHub token source: `C:\Users\superjk\Desktop\Job-Application-Pipeline-Desktop\.github_tokens`
-
-Read the toolbox first if this session needs the established JARVIS workflow.
 
 ## Purpose
 
@@ -39,7 +29,8 @@ Use this repo for one-off or recurring share pages, for example:
 ## Hard Rules
 
 - This repo is intended to be public.
-- Do not copy job-search documents, private certificates, IDs, bankbook images, tokens, or other sensitive files from the parent project.
+- Do not copy job-search documents, private certificates, IDs, bankbook images, tokens, or other sensitive files from any private project.
+- Do not commit local token paths, private workflow notes, or deployment credentials.
 - If screenshots are used, crop payment/account/private information before publishing.
 - Each page should live under `pages/{slug}/`.
 - Keep each page self-contained unless a shared asset is intentionally introduced.
@@ -66,4 +57,3 @@ Recommended deployment:
 
 - GitHub Pages from `main` branch root
 - Public repo is fine if the hard rules above are followed
-

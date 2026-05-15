@@ -1,6 +1,6 @@
 # Share Pages
 
-Small public landing pages for quick sharing.
+Small public landing pages for quick sharing through GitHub Pages.
 
 ## Structure
 
@@ -13,7 +13,11 @@ pages/
 
 ## Local Preview
 
-Open any page's `index.html` in a browser.
+Open any page's `index.html` in a browser, or serve the repo root locally:
+
+```powershell
+python -m http.server 4173
+```
 
 Current page:
 
@@ -21,5 +25,12 @@ Current page:
 
 ## Deploy
 
-Use GitHub Pages from the repository root after pushing to GitHub.
+Recommended setup:
 
+- Repository: `share-pages`
+- Visibility: public
+- Source: `main` branch, repository root
+- Root index: `index.html`
+- Page URL path: `/pages/jamsil-baseball-20260522/`
+
+Keep public pages free of payment details, ticket QR codes, account numbers, tokens, and private project materials.
