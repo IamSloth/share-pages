@@ -1,10 +1,23 @@
-# Jamsil Baseball 2026-05-22
+# Share Pages
 
-Shared landing page for a Kiwoom Heroes vs LG Twins game at Jamsil Baseball Stadium.
+Small public landing pages for quick sharing.
+
+## Structure
+
+```text
+pages/
+└── jamsil-baseball-20260522/
+    ├── index.html
+    └── assets/
+```
 
 ## Local Preview
 
-Open `index.html` in a browser.
+Open any page's `index.html` in a browser.
+
+Current page:
+
+- `pages/jamsil-baseball-20260522/index.html`
 
 ## Deploy
 
