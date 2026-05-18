@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2026년 5월 22일 잠실야구장 키움 히어로즈 vs LG 트윈스 직관 공유 페이지">
+  <meta name="description" content="2026년 5월 22일 잠실야구장 키움 히어로즈 원정응원석 직관 공유 티켓">
   <meta property="og:title" content="JAMSIL NIGHT GAME">
-  <meta property="og:description" content="2026.05.22 금요일 18:30 KST, 잠실야구장 키움 히어로즈 vs LG 트윈스">
+  <meta property="og:description" content="키움 히어로즈 원정응원석 · 2026.05.22 금요일 18:30 KST · 잠실야구장">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#070912">
+  <meta name="theme-color" content="#090a10">
   <title>JAMSIL NIGHT GAME</title>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -31,15 +31,20 @@
       font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
 
-    @keyframes shineSweep {
-      0% { transform: translateX(-130%) rotate(10deg); opacity: 0; }
-      22% { opacity: .65; }
-      52%, 100% { transform: translateX(150%) rotate(10deg); opacity: 0; }
+    @keyframes ticketFloat {
+      0%, 100% { transform: rotate(-1.4deg) translateY(0); }
+      50% { transform: rotate(.8deg) translateY(-7px); }
     }
 
-    @keyframes livePulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 109, .44); }
-      50% { box-shadow: 0 0 0 9px rgba(255, 77, 109, 0); }
+    @keyframes shimmer {
+      0% { transform: translateX(-135%) rotate(12deg); opacity: 0; }
+      18% { opacity: .55; }
+      48%, 100% { transform: translateX(155%) rotate(12deg); opacity: 0; }
+    }
+
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(var(--r)); }
+      50% { transform: translateY(-8px) rotate(var(--r)); }
     }
 
     @keyframes floatHeart {
@@ -47,220 +52,283 @@
         transform: translate3d(0, 0, 0) scale(.58) rotate(0deg);
         opacity: 0;
       }
-      14% { opacity: 1; }
+      16% { opacity: 1; }
       100% {
-        transform: translate3d(var(--heart-x), -150px, 0) scale(1.35) rotate(var(--heart-r));
+        transform: translate3d(var(--heart-x), -148px, 0) scale(1.35) rotate(var(--heart-r));
         opacity: 0;
       }
     }
 
-    @keyframes badgeFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+    .paper {
+      background:
+        radial-gradient(circle at 16px 16px, rgba(0,0,0,.035) 0 1px, transparent 1.5px) 0 0 / 18px 18px,
+        linear-gradient(135deg, #fffefb 0%, #f4f0ea 46%, #ffffff 100%);
     }
 
-    .glass-shine::after {
-      animation: shineSweep 5.2s ease-in-out infinite;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+    .ticket-card {
+      animation: ticketFloat 5.8s ease-in-out infinite;
+    }
+
+    .ticket-card::after {
+      animation: shimmer 4.8s ease-in-out infinite;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
       content: "";
-      height: 160%;
-      left: 0;
+      height: 150%;
+      left: -20%;
       pointer-events: none;
       position: absolute;
-      top: -30%;
+      top: -25%;
       width: 42%;
     }
 
-    .live-dot {
-      animation: livePulse 1.55s ease-in-out infinite;
+    .stub-cut::before,
+    .stub-cut::after {
+      background: #08090f;
+      border-radius: 9999px;
+      content: "";
+      height: 30px;
+      position: absolute;
+      top: -15px;
+      width: 30px;
+      z-index: 3;
+    }
+
+    .stub-cut::before { left: -15px; }
+    .stub-cut::after { right: -15px; }
+
+    .mascot-bob {
+      animation: bob 4.4s ease-in-out infinite;
     }
 
     .heart-float {
       animation: floatHeart 1.18s cubic-bezier(.18, .86, .38, 1) forwards;
     }
 
-    .mascot-card {
-      animation: badgeFloat 4.8s ease-in-out infinite;
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .glass-shine::after,
-      .live-dot,
-      .heart-float,
-      .mascot-card {
+      .ticket-card,
+      .ticket-card::after,
+      .mascot-bob,
+      .heart-float {
         animation: none;
       }
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#060711] text-white antialiased">
-  <main class="relative mx-auto min-h-screen w-full max-w-[430px] overflow-hidden bg-[#060711] shadow-2xl">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(255,255,255,.14),transparent_24%),radial-gradient(circle_at_84%_2%,rgba(255,77,109,.2),transparent_26%),linear-gradient(180deg,#0d1020_0%,#070912_46%,#05060d_100%)]"></div>
+<body class="min-h-screen bg-[#08090f] text-white antialiased">
+  <main class="relative mx-auto min-h-screen w-full max-w-[430px] overflow-hidden bg-[#08090f] shadow-2xl">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_5%,rgba(142,15,59,.44),transparent_28%),radial-gradient(circle_at_86%_18%,rgba(255,138,31,.16),transparent_24%),linear-gradient(180deg,#15151b_0%,#08090f_52%,#040408_100%)]"></div>
 
-    <section
-      class="relative isolate min-h-[670px] px-5 pb-5 pt-5"
-      style="background-image: linear-gradient(180deg, rgba(6,7,17,.08) 0%, rgba(6,7,17,.58) 48%, #060711 100%), linear-gradient(125deg, rgba(111,22,65,.48), rgba(255,138,31,.13) 48%, rgba(198,29,56,.34)), url('./assets/jamsil-stadium-unsplash.jpg'); background-size: cover; background-position: 43% center;"
-    >
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_18%_16%,rgba(255,255,255,.18),transparent_26%),radial-gradient(circle_at_92%_18%,rgba(255,138,31,.2),transparent_27%)]"></div>
-      <div class="absolute inset-x-0 bottom-0 -z-10 h-72 bg-gradient-to-t from-[#060711] via-[#060711]/82 to-transparent"></div>
-
-      <header class="flex items-center justify-between">
-        <div class="flex items-center gap-2 rounded-full border border-white/15 bg-black/25 px-3 py-2 text-[12px] font-black text-white/85 shadow-lg backdrop-blur-2xl">
-          <span class="grid size-5 place-items-center rounded-full bg-white text-[10px] font-black text-[#111827]">J</span>
-          <span>JAMSIL 0522</span>
+    <section class="relative px-5 pb-5 pt-5">
+      <header class="relative z-10 flex items-center justify-between">
+        <div class="rounded-full border border-white/12 bg-white/8 px-3 py-2 text-[12px] font-black text-white/78 backdrop-blur-xl">
+          JAMSIL 0522
         </div>
-        <div class="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white/85 backdrop-blur-2xl">
-          <span class="live-dot size-2 rounded-full bg-[#ff4d6d]"></span>
-          <span>FRI 18:30</span>
+        <div class="rounded-full border border-[#ffcc66]/25 bg-[#ffcc66]/12 px-3 py-2 text-[12px] font-black text-[#ffe0a3] backdrop-blur-xl">
+          AWAY CHEERING
         </div>
       </header>
 
-      <section class="pt-[132px]">
-        <p class="mb-3 w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[11px] font-black tracking-[0.18em] text-white/75 backdrop-blur-2xl">
-          SEOUL BASEBALL NIGHT · 4 CREW
-        </p>
-        <h1 class="max-w-[360px] text-[58px] font-black leading-[.88] tracking-tight text-white drop-shadow-2xl">
-          JAMSIL<br>
-          <span class="bg-gradient-to-r from-white via-[#ffd8a6] to-[#ff7a59] bg-clip-text text-transparent">NIGHT</span>
-          GAME
+      <section class="relative z-10 pt-10">
+        <p class="text-[11px] font-black tracking-[0.22em] text-white/38">SEOUL BASEBALL NIGHT</p>
+        <h1 class="mt-3 text-[48px] font-black leading-[.9] tracking-tight">
+          REAL<br>
+          TICKET<br>
+          NIGHT
         </h1>
-        <p class="mt-4 max-w-[318px] text-[16px] font-semibold leading-7 text-white/72">
-          키움 히어로즈와 LG 트윈스, 금요일 밤 잠실에서 보는 4인 직관 티켓.
+        <p class="mt-4 max-w-[300px] text-[15px] font-semibold leading-6 text-white/58">
+          키움 원정응원석으로 들어가는 금요일 밤 잠실 직관.
         </p>
       </section>
 
-      <section class="glass-shine relative mt-9 overflow-hidden rounded-[30px] border border-white/15 bg-white/[0.13] p-3 shadow-[0_26px_90px_rgba(0,0,0,.45)] backdrop-blur-2xl">
-        <div class="flex items-center justify-between px-1 pb-3 pt-1 text-[11px] font-black tracking-[0.18em] text-white/45">
-          <span>MATCH TICKET</span>
-          <span>SEOUL</span>
-        </div>
+      <section class="relative z-10 mt-8">
+        <div class="absolute left-5 right-5 top-7 h-full rotate-[3.5deg] rounded-[18px] bg-[#c9c3b8]/40 blur-[1px]"></div>
 
-        <div class="grid grid-cols-[1fr_44px_1fr] items-center gap-2">
-          <div class="rounded-[24px] border border-white/10 bg-[#72183b]/78 p-4 text-center shadow-inner shadow-white/10">
-            <div class="mx-auto grid size-[72px] place-items-center rounded-[22px] bg-white/95 p-3 shadow-xl shadow-black/25">
-              <img src="./assets/kiwoom-insignia.png" alt="키움 히어로즈 CI" class="max-h-12 max-w-12 object-contain">
+        <article class="ticket-card paper relative overflow-hidden rounded-[18px] text-[#15151a] shadow-[0_28px_70px_rgba(0,0,0,.45)]">
+          <div class="relative h-[238px] overflow-hidden bg-[#171820]">
+            <img src="./assets/jamsil-stadium-unsplash.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-45">
+            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.34)_0%,rgba(0,0,0,.08)_42%,rgba(0,0,0,.76)_100%)]"></div>
+            <div class="absolute left-4 top-4 rounded-sm bg-white px-2 py-1 text-[11px] font-black tracking-tight text-[#15151a]">NO. 0522</div>
+            <div class="absolute right-4 top-4 text-right text-[10px] font-black leading-tight tracking-[0.16em] text-white/70">
+              KIWOOM<br>AWAY SEAT
             </div>
-            <p class="mt-3 text-[10px] font-black tracking-[0.18em] text-white/55">AWAY</p>
-            <p class="mt-1 text-[20px] font-black leading-none">KIWOOM</p>
-          </div>
 
-          <div class="grid size-11 place-items-center rounded-full bg-white text-[12px] font-black text-[#111827] shadow-xl">VS</div>
+            <img src="./assets/tukdori.png" alt="턱돌이" class="mascot-bob absolute -bottom-8 -left-16 h-[245px] w-[245px] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.42)]" style="--r:-8deg">
+            <img src="./assets/dongle.png" alt="동글이" class="mascot-bob absolute -bottom-5 right-[-54px] h-[220px] w-[220px] object-contain drop-shadow-[0_16px_18px_rgba(0,0,0,.38)]" style="--r:7deg; animation-delay:-1.4s">
+            <img src="./assets/lg-mascots.png" alt="LG 트윈스 마스코트" class="absolute bottom-3 left-1/2 h-[86px] w-[86px] -translate-x-1/2 rounded-[16px] bg-white/90 p-1.5 object-contain shadow-xl">
 
-          <div class="rounded-[24px] border border-white/10 bg-[#c61d38]/78 p-4 text-center shadow-inner shadow-white/10">
-            <div class="mx-auto grid size-[72px] place-items-center rounded-[22px] bg-white/95 p-2 shadow-xl shadow-black/25">
-              <img src="./assets/lg-twins-logo.png" alt="LG 트윈스 CI" class="max-h-14 max-w-14 object-contain">
+            <div class="absolute bottom-4 left-4">
+              <p class="text-[10px] font-black tracking-[0.18em] text-white/58">2026 SHINHAN SOL KBO LEAGUE</p>
+              <p class="mt-1 text-[23px] font-black text-white">KIWOOM vs LG</p>
             </div>
-            <p class="mt-3 text-[10px] font-black tracking-[0.18em] text-white/55">HOME</p>
-            <p class="mt-1 text-[20px] font-black leading-none">LG</p>
           </div>
-        </div>
 
-        <div class="mt-3 grid grid-cols-2 gap-2">
-          <div class="rounded-[22px] bg-black/25 p-4">
-            <p class="text-[11px] font-black text-white/45"><i class="fa-regular fa-calendar mr-1.5"></i>DATE</p>
-            <p class="mt-2 text-[18px] font-black">2026.05.22</p>
-            <p class="mt-1 text-[13px] font-bold text-white/55">금요일</p>
+          <div class="px-5 pb-5 pt-4">
+            <div class="grid grid-cols-[1fr_auto] items-start gap-3">
+              <div>
+                <p class="text-[11px] font-black tracking-[0.18em] text-[#9b1b3f]">JAMSIL NIGHT GAME</p>
+                <h2 class="mt-1 text-[30px] font-black leading-none tracking-tight">키움 원정응원석</h2>
+              </div>
+              <div class="rounded-md border border-[#111]/10 bg-[#111] px-2.5 py-2 text-center text-white">
+                <p class="text-[9px] font-black opacity-55">BLOCK</p>
+                <p class="text-[22px] font-black leading-none">220</p>
+              </div>
+            </div>
+
+            <div class="my-5 border-t border-dashed border-[#15151a]/22"></div>
+
+            <div class="grid grid-cols-2 gap-x-4 gap-y-4">
+              <div>
+                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">DATE</p>
+                <p class="mt-1 text-[18px] font-black">2026.05.22</p>
+                <p class="text-[12px] font-extrabold text-[#15151a]/48">금요일</p>
+              </div>
+              <div>
+                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">TIME</p>
+                <p class="mt-1 text-[18px] font-black">18:30</p>
+                <p class="text-[12px] font-extrabold text-[#15151a]/48">KST</p>
+              </div>
+              <div>
+                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">VENUE</p>
+                <p class="mt-1 text-[18px] font-black">잠실야구장</p>
+                <p class="text-[12px] font-extrabold text-[#15151a]/48">서울</p>
+              </div>
+              <div>
+                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">SEAT</p>
+                <p class="mt-1 text-[18px] font-black">11열</p>
+                <p class="text-[12px] font-extrabold text-[#15151a]/48">3루 원정응원석</p>
+              </div>
+            </div>
           </div>
-          <div class="rounded-[22px] bg-black/25 p-4">
-            <p class="text-[11px] font-black text-white/45"><i class="fa-regular fa-clock mr-1.5"></i>TIME</p>
-            <p class="mt-2 text-[18px] font-black">18:30</p>
-            <p class="mt-1 text-[13px] font-bold text-white/55">KST</p>
+
+          <div class="stub-cut relative border-t border-dashed border-[#15151a]/20 bg-[#f0ebe3] px-5 py-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-[10px] font-black tracking-[0.2em] text-[#15151a]/42">CREW PASS</p>
+                <p class="mt-1 text-[17px] font-black">4 CREW · AWAY SIDE</p>
+              </div>
+              <div class="grid size-11 place-items-center rounded-full bg-[#9b1b3f] text-[20px] text-white">
+                <i class="fa-solid fa-baseball"></i>
+              </div>
+            </div>
           </div>
-        </div>
+        </article>
       </section>
     </section>
 
-    <section class="relative z-10 space-y-3 px-5 pb-5">
-      <article class="overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.08] p-5 shadow-[0_18px_55px_rgba(0,0,0,.28)] backdrop-blur-2xl">
-        <div class="mb-5 flex items-center justify-between">
-          <h2 class="text-[13px] font-black tracking-[0.18em] text-white/40">GAME INFO</h2>
-          <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-[12px] font-extrabold text-emerald-200">CONFIRMED</span>
+    <section class="relative z-10 space-y-4 px-5 pb-6">
+      <article class="rounded-[18px] border border-white/10 bg-white/[0.07] p-5 backdrop-blur-2xl">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">GAME INFO</p>
+            <p class="mt-2 text-[24px] font-black leading-tight">장소, 시간, 좌석만<br>딱 보기 좋게</p>
+          </div>
+          <div class="rounded-[14px] bg-[#9b1b3f]/25 px-3 py-2 text-right">
+            <p class="text-[10px] font-black text-white/42">TEAM</p>
+            <p class="text-[16px] font-black text-[#ffc45f]">KIWOOM</p>
+          </div>
+        </div>
+
+        <div class="mt-5 space-y-3">
+          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+            <div>
+              <p class="text-[12px] font-bold text-white/38">매치업</p>
+              <p class="text-[16px] font-black">키움 히어로즈 vs LG 트윈스</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <p class="text-[12px] font-bold text-white/38">장소</p>
+              <p class="text-[16px] font-black">잠실야구장 · 3루 원정응원석</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-ticket"></i></div>
+            <div>
+              <p class="text-[12px] font-bold text-white/38">좌석</p>
+              <p class="text-[16px] font-black">220블록 11열</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <section class="rounded-[18px] border border-white/10 bg-white/[0.07] p-5 backdrop-blur-2xl">
+        <div class="mb-4 flex items-end justify-between">
+          <div>
+            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">CHANT PREVIEW</p>
+            <h2 class="mt-2 text-[24px] font-black">응원가 미리보기</h2>
+          </div>
+          <i class="fa-brands fa-youtube text-[28px] text-[#ff375f]"></i>
         </div>
 
         <div class="space-y-4">
-          <div class="flex gap-3">
-            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
-              <i class="fa-solid fa-baseball-bat-ball"></i>
+          <article class="overflow-hidden rounded-[16px] bg-black/28">
+            <div class="flex items-center justify-between px-4 py-3">
+              <div>
+                <p class="text-[10px] font-black tracking-[0.18em] text-white/34">LG TWINS</p>
+                <p class="text-[16px] font-black">오스틴 딘 응원가</p>
+              </div>
+              <span class="rounded-full bg-[#c30452]/24 px-3 py-1 text-[12px] font-black text-[#ffb0c8]">HOME</span>
             </div>
-            <div>
-              <p class="text-[12px] font-bold text-white/40">매치업</p>
-              <p class="text-[17px] font-black">키움 히어로즈 vs LG 트윈스</p>
-            </div>
-          </div>
+            <iframe
+              class="aspect-[9/16] w-full"
+              src="https://www.youtube.com/embed/5rSAkmll26I"
+              title="LG 오스틴 딘 응원가 Shorts"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </article>
 
-          <div class="flex gap-3">
-            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
-              <i class="fa-solid fa-location-dot"></i>
+          <article class="overflow-hidden rounded-[16px] bg-black/28">
+            <div class="flex items-center justify-between px-4 py-3">
+              <div>
+                <p class="text-[10px] font-black tracking-[0.18em] text-white/34">KIWOOM HEROES</p>
+                <p class="text-[16px] font-black">서건창 응원가</p>
+              </div>
+              <span class="rounded-full bg-[#9b1b3f]/30 px-3 py-1 text-[12px] font-black text-[#ffc45f]">AWAY</span>
             </div>
-            <div>
-              <p class="text-[12px] font-bold text-white/40">장소</p>
-              <p class="text-[17px] font-black">잠실야구장</p>
-            </div>
-          </div>
-
-          <div class="flex gap-3">
-            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
-              <i class="fa-solid fa-ticket"></i>
-            </div>
-            <div>
-              <p class="text-[12px] font-bold text-white/40">좌석</p>
-              <p class="text-[17px] font-black">220블록 11열</p>
-            </div>
-          </div>
+            <iframe
+              class="aspect-[9/16] w-full"
+              src="https://www.youtube.com/embed/xuQ3UCPF9dk"
+              title="서건창 응원가 Shorts"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </article>
         </div>
-      </article>
+      </section>
 
-      <article class="grid grid-cols-[1fr_118px] gap-3 rounded-[30px] border border-white/10 bg-gradient-to-br from-white/[0.14] to-white/[0.06] p-4 backdrop-blur-2xl">
-        <div class="flex flex-col justify-between py-1">
-          <div>
-            <p class="text-[12px] font-black tracking-[0.18em] text-white/40">MASCOT CAMEO</p>
-            <p class="mt-2 text-[25px] font-black leading-tight">응원 무드<br>살짝 올려두기</p>
-          </div>
-          <div class="mt-4 flex items-center gap-2">
-            <span class="rounded-full bg-[#ff8a21]/18 px-3 py-1 text-[12px] font-extrabold text-[#ffd7a6]">KIWOOM</span>
-            <span class="rounded-full bg-[#ff4d6d]/18 px-3 py-1 text-[12px] font-extrabold text-[#ffb7c5]">LG</span>
-          </div>
-        </div>
-        <div class="mascot-card relative min-h-[154px] overflow-hidden rounded-[24px] border border-white/10 bg-black/25 shadow-2xl">
-          <img src="./assets/kiwoom-mascot.jpg" alt="키움 히어로즈 마스코트" class="absolute inset-0 h-full w-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-          <img src="./assets/lg-twins-logo.png" alt="LG 트윈스 CI" class="absolute bottom-3 right-3 h-10 w-12 rounded-xl bg-white/92 p-1.5 object-contain shadow-lg">
-        </div>
-      </article>
-
-      <section class="relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.09] p-5 shadow-[0_18px_60px_rgba(0,0,0,.3)] backdrop-blur-2xl">
+      <section class="relative overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.08] p-5 shadow-[0_18px_60px_rgba(0,0,0,.3)] backdrop-blur-2xl">
         <div id="heartLayer" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
 
         <div class="relative flex items-center justify-between gap-4">
           <div>
-            <p class="text-[12px] font-black tracking-[0.18em] text-white/40">LIVE REACTION</p>
-            <p class="mt-2 text-[27px] font-black leading-tight">하트 날리고<br>입장하기</p>
-            <p class="mt-2 text-[13px] font-semibold text-white/48">버튼 누르면 하트가 위로 올라가요.</p>
+            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">LIVE REACTION</p>
+            <p class="mt-2 text-[25px] font-black leading-tight">하트 날리고<br>출발하기</p>
+            <p class="mt-2 text-[13px] font-semibold text-white/46">누르면 하트가 올라가요.</p>
           </div>
 
           <button
             id="heartButton"
             type="button"
-            class="grid size-[92px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff4d6d] via-[#ff6b4a] to-[#ffb84d] text-[38px] text-white shadow-[0_20px_44px_rgba(255,77,109,.32)] transition duration-150 active:scale-95"
+            class="grid size-[86px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff375f] via-[#ff6b4a] to-[#ffc45f] text-[35px] text-white shadow-[0_20px_44px_rgba(255,55,95,.32)] transition duration-150 active:scale-95"
             aria-label="응원 하트 날리기"
           >
             <i class="fa-solid fa-heart"></i>
           </button>
         </div>
 
-        <div class="relative mt-4 flex items-center justify-between rounded-[22px] border border-white/10 bg-black/25 px-4 py-3">
-          <span class="text-[11px] font-black tracking-[0.18em] text-white/42">HEARTS</span>
+        <div class="relative mt-4 flex items-center justify-between rounded-[14px] border border-white/10 bg-black/25 px-4 py-3">
+          <span class="text-[11px] font-black tracking-[0.18em] text-white/38">HEARTS</span>
           <strong id="heartCount" class="text-[22px] font-black leading-none">0</strong>
         </div>
       </section>
 
-      <p class="px-1 text-center text-[11px] font-semibold leading-5 text-white/32 [&_a]:underline [&_a]:decoration-white/20 [&_a]:underline-offset-2">
+      <p class="px-1 text-center text-[11px] font-semibold leading-5 text-white/30">
         공개 공유용 페이지입니다. 결제수단, 계좌번호, 티켓 QR, 토큰 등 민감정보는 포함하지 않았습니다.
-        Visuals:
-        <a href="https://commons.wikimedia.org/wiki/File:Kiwoom_Heroes_Mascot.JPG" target="_blank" rel="noreferrer">알티마프 / CC BY 2.0 KR</a>,
-        <a href="https://commons.wikimedia.org/wiki/File:Kiwoom_Heroes_insignia.png" target="_blank" rel="noreferrer">Kiwoom CI</a>,
-        <a href="https://commons.wikimedia.org/wiki/File:LG_Twins_2017.png" target="_blank" rel="noreferrer">LG CI</a>,
-        <a href="https://unsplash.com/photos/au0qZblI6Js" target="_blank" rel="noreferrer">Junseong Lee / Unsplash</a>.
       </p>
     </section>
   </main>
@@ -270,8 +338,8 @@
       const button = document.getElementById("heartButton");
       const layer = document.getElementById("heartLayer");
       const countEl = document.getElementById("heartCount");
-      const storageKey = "jamsil-night-heart-count";
-      const colors = ["#ff4d6d", "#ff8a21", "#ffd166", "#ffffff", "#ffb7c5"];
+      const storageKey = "jamsil-ticket-heart-count";
+      const colors = ["#ff375f", "#ff8a21", "#ffc45f", "#ffffff", "#9b1b3f"];
       let count = Number(localStorage.getItem(storageKey) || 0);
 
       const paintCount = () => {
@@ -280,12 +348,12 @@
 
       const makeHeart = () => {
         const heart = document.createElement("span");
-        const x = Math.round(Math.random() * 126 - 72);
-        const rotate = Math.round(Math.random() * 42 - 21);
+        const x = Math.round(Math.random() * 128 - 72);
+        const rotate = Math.round(Math.random() * 46 - 23);
         const size = Math.round(Math.random() * 12 + 18);
         const color = colors[Math.floor(Math.random() * colors.length)];
 
-        heart.className = "heart-float absolute bottom-[72px] right-[58px]";
+        heart.className = "heart-float absolute bottom-[72px] right-[54px]";
         heart.style.setProperty("--heart-x", `${x}px`);
         heart.style.setProperty("--heart-r", `${rotate}deg`);
         heart.style.color = color;
