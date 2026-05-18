@@ -4,585 +4,167 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="2026년 5월 22일 잠실야구장 키움 히어로즈 vs LG 트윈스 직관 공유 페이지">
-  <meta property="og:title" content="Jamsil Night Game · Kiwoom vs LG">
-  <meta property="og:description" content="2026년 5월 22일 18:30 잠실야구장 직관 안내">
+  <meta property="og:title" content="JAMSIL NIGHT GAME">
+  <meta property="og:description" content="2026.05.22 금요일 18:30 KST · 잠실야구장">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#08090d">
-  <title>Jamsil Night Game · Kiwoom vs LG</title>
+  <meta name="theme-color" content="#070912">
+  <title>JAMSIL NIGHT GAME</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ["Pretendard", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
   <style>
-    :root {
-      --black: #08090d;
-      --ink: #f9fafb;
-      --muted: rgba(249, 250, 251, .68);
-      --dim: rgba(249, 250, 251, .42);
-      --line: rgba(249, 250, 251, .18);
-      --glass: rgba(10, 12, 18, .54);
-      --glass-strong: rgba(10, 12, 18, .74);
-      --paper: #f5f5f7;
-      --paper-ink: #111217;
-      --paper-muted: #71727b;
-      --kiwoom: #72183b;
-      --lg: #c61d38;
-      --orange: #ff8a21;
-      --sand: #ffd18f;
-      --green: #2f7553;
-      --shadow: 0 28px 80px rgba(0, 0, 0, .34);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      background: var(--black);
-    }
-
     body {
-      min-height: 100vh;
-      margin: 0;
-      background: var(--black);
-      color: var(--ink);
-      font-family: "Pretendard", "SUIT", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-      line-height: 1.5;
-      letter-spacing: 0;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(8, 9, 13, .24) 0%, rgba(8, 9, 13, .64) 58%, var(--black) 100%),
-        linear-gradient(105deg, rgba(114, 24, 59, .74) 0%, rgba(8, 9, 13, .12) 44%, rgba(198, 29, 56, .5) 100%),
-        url("./assets/jamsil-stadium-unsplash.jpg") center / cover;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(255, 255, 255, .08) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(255, 255, 255, .07) 1px, transparent 1px);
-      background-size: 44px 44px;
-      opacity: .22;
-      mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 84%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .shell {
-      position: relative;
-      z-index: 1;
-      width: min(100% - 40px, 1180px);
-      min-height: 100svh;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      gap: 24px;
-      margin: 0 auto;
-      padding: 18px 0 28px;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 44px;
-      color: rgba(255, 255, 255, .8);
-      font-size: .82rem;
-      font-weight: 880;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand-mark {
-      width: 22px;
-      height: 22px;
-      display: inline-grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, .42);
-      border-radius: 50%;
-      color: #111217;
-      background: #fff;
-      font-size: .68rem;
-      font-weight: 950;
-    }
-
-    .topbar time {
-      color: #fff;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
-      gap: 28px;
-      align-items: end;
-    }
-
-    .kicker {
-      width: fit-content;
-      margin: 0 0 16px;
-      padding: 7px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .1);
-      color: rgba(255, 255, 255, .84);
-      font-size: .82rem;
-      font-weight: 900;
-      backdrop-filter: blur(16px);
-    }
-
-    h1 {
-      max-width: 760px;
-      margin: 0;
-      font-size: 6rem;
-      line-height: .9;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    h1 span {
-      display: block;
-    }
-
-    .highlight {
-      color: transparent;
-      background: linear-gradient(90deg, #fff 0%, var(--sand) 50%, var(--orange) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    .lead {
-      max-width: 620px;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 1.08rem;
-      font-weight: 760;
-      word-break: keep-all;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 22px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 7px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .11);
-      color: #fff;
-      font-size: .88rem;
-      font-weight: 850;
-      backdrop-filter: blur(14px);
-    }
-
-    .scoreboard {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .05)),
-        var(--glass);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(24px);
-      overflow: hidden;
-    }
-
-    .score-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 44px;
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, .12);
-      color: var(--dim);
-      font-size: .72rem;
-      font-weight: 950;
-    }
-
-    .teams {
-      display: grid;
-      gap: 0;
-    }
-
-    .team {
-      display: grid;
-      grid-template-columns: 54px minmax(0, 1fr) auto;
-      gap: 12px;
-      align-items: center;
-      min-height: 92px;
-      padding: 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, .1);
-    }
-
-    .team:last-child {
-      border-bottom: 0;
-    }
-
-    .badge {
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      color: #fff;
-      font-weight: 950;
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
-    }
-
-    .badge.k {
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, .18), transparent 48%),
-        var(--kiwoom);
-    }
-
-    .badge.l {
-      background:
-        linear-gradient(145deg, rgba(255, 255, 255, .18), transparent 48%),
-        var(--lg);
-    }
-
-    .team small,
-    .team strong {
-      display: block;
-    }
-
-    .team small {
-      color: var(--dim);
-      font-size: .72rem;
-      font-weight: 900;
-    }
-
-    .team strong {
-      margin-top: 3px;
-      color: #fff;
-      font-size: 1.42rem;
-      line-height: 1.05;
-    }
-
-    .side {
-      color: rgba(255, 255, 255, .58);
-      font-size: .76rem;
-      font-weight: 950;
-    }
-
-    .ticket-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      padding: 10px;
-      background: rgba(0, 0, 0, .16);
-    }
-
-    .ticket-item {
-      min-height: 76px;
-      padding: 10px;
-      border: 1px solid rgba(255, 255, 255, .12);
-      border-radius: 8px;
-      background: rgba(0, 0, 0, .2);
-    }
-
-    .ticket-item span,
-    .ticket-item strong {
-      display: block;
-    }
-
-    .ticket-item span {
-      color: var(--dim);
-      font-size: .7rem;
-      font-weight: 900;
-    }
-
-    .ticket-item strong {
-      margin-top: 5px;
-      color: #fff;
-      font-size: 1.02rem;
-      line-height: 1.18;
-      word-break: keep-all;
-    }
-
-    .marquee {
-      display: flex;
-      gap: 8px;
-      overflow: hidden;
-      color: rgba(255, 255, 255, .86);
-      font-size: .82rem;
-      font-weight: 950;
-      white-space: nowrap;
-    }
-
-    .marquee span {
-      flex: 0 0 auto;
-      padding: 8px 10px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, .09);
-      backdrop-filter: blur(12px);
-    }
-
-    .details {
-      background: #f5f5f7;
-      color: var(--paper-ink);
-    }
-
-    .detail-wrap {
-      width: min(100% - 40px, 1180px);
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 12px;
-      margin: 0 auto;
-      padding: 14px 0 34px;
-    }
-
-    .panel {
-      min-width: 0;
-      padding: 22px;
-      border: 1px solid rgba(17, 18, 23, .08);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .86);
-      box-shadow: 0 18px 46px rgba(17, 18, 23, .08);
-    }
-
-    .panel h2 {
-      margin: 0 0 16px;
-      color: var(--paper-muted);
-      font-size: .78rem;
-      font-weight: 950;
-    }
-
-    .info-list {
-      display: grid;
-      gap: 12px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .info-list li {
-      display: grid;
-      grid-template-columns: 68px minmax(0, 1fr);
-      gap: 12px;
-      align-items: start;
-    }
-
-    .label {
-      color: var(--paper-muted);
-      font-weight: 850;
-    }
-
-    .value {
-      font-weight: 920;
-      word-break: keep-all;
-    }
-
-    .seat-title {
-      margin: 0;
-      font-size: 2.18rem;
-      line-height: 1.05;
-      font-weight: 950;
-      word-break: keep-all;
-    }
-
-    .seat-note {
-      margin: 12px 0 0;
-      color: var(--paper-muted);
-      font-weight: 780;
-      word-break: keep-all;
-    }
-
-    .seat-chip {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      margin-top: 18px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #fff0df;
-      color: #9a4f00;
-      font-size: .82rem;
-      font-weight: 900;
-    }
-
-    footer {
-      width: min(100% - 40px, 1180px);
-      margin: 0 auto;
-      padding: 0 0 26px;
-      color: #7a7b84;
-      font-size: .75rem;
-      font-weight: 700;
-      text-align: center;
-      word-break: keep-all;
-    }
-
-    @media (max-width: 860px) {
-      .shell,
-      .detail-wrap,
-      footer {
-        width: min(100% - 24px, 1180px);
-      }
-
-      .shell {
-        gap: 18px;
-        padding-top: 12px;
-      }
-
-      .hero-grid,
-      .detail-wrap {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 4rem;
-      }
-    }
-
-    @media (max-width: 440px) {
-      .hero {
-        background-position: 43% center;
-      }
-
-      .topbar {
-        min-height: 38px;
-      }
-
-      .hero-grid {
-        gap: 18px;
-      }
-
-      h1 {
-        font-size: 3.2rem;
-      }
-
-      .lead {
-        font-size: .98rem;
-      }
-
-      .team {
-        min-height: 80px;
-        grid-template-columns: 46px minmax(0, 1fr) auto;
-        gap: 10px;
-        padding: 12px;
-      }
-
-      .badge {
-        width: 46px;
-        height: 46px;
-      }
-
-      .team strong {
-        font-size: 1.2rem;
-      }
-
-      .ticket-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .ticket-item {
-        min-height: 66px;
-      }
-
-      .panel {
-        padding: 18px;
-      }
-
-      .seat-title {
-        font-size: 1.78rem;
-      }
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
     }
   </style>
 </head>
-<body>
-  <header class="hero">
-    <div class="shell">
-      <nav class="topbar" aria-label="페이지 상단">
-        <div class="brand"><span class="brand-mark">J</span><span>JAMSIL 0522</span></div>
-        <time datetime="2026-05-22T18:30:00+09:00">FRI 18:30</time>
-      </nav>
+<body class="min-h-screen bg-[#070912] text-white antialiased">
+  <main class="relative mx-auto min-h-screen w-full max-w-[430px] overflow-hidden bg-[#070912] shadow-2xl">
+    <section
+      class="relative min-h-screen px-5 pb-6 pt-5"
+      style="background-image: linear-gradient(180deg, rgba(7,9,18,.18) 0%, rgba(7,9,18,.72) 48%, #070912 100%), linear-gradient(130deg, rgba(115,24,59,.52), rgba(255,138,31,.12) 48%, rgba(198,29,56,.44)), url('./assets/jamsil-stadium-unsplash.jpg'); background-size: cover; background-position: 42% center;"
+    >
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_12%,rgba(255,255,255,.16),transparent_28%),radial-gradient(circle_at_92%_18%,rgba(255,138,31,.22),transparent_26%)]"></div>
+      <div class="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#070912] to-transparent"></div>
 
-      <div class="hero-grid">
-        <section aria-label="경기 소개">
-          <p class="kicker">SEOUL BASEBALL NIGHT · 4 CREW</p>
-          <h1><span>JAMSIL</span><span class="highlight">NIGHT</span><span>GAME</span></h1>
-          <p class="lead">금요일 저녁, 잠실에서 키움 히어로즈와 LG 트윈스. 필요한 건 시간, 장소, 좌석뿐.</p>
-          <div class="hero-meta" aria-label="핵심 정보">
-            <span class="chip">2026.05.22</span>
-            <span class="chip">18:30 KST</span>
-            <span class="chip">잠실야구장</span>
+      <div class="relative z-10 flex min-h-[calc(100vh-44px)] flex-col">
+        <header class="flex items-center justify-between">
+          <div class="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-2 text-[12px] font-extrabold text-white/85 backdrop-blur-xl">
+            <span class="grid size-5 place-items-center rounded-full bg-white text-[10px] font-black text-[#111827]">J</span>
+            <span>JAMSIL 0522</span>
           </div>
+          <div class="rounded-full border border-white/15 bg-black/20 px-3 py-2 text-[12px] font-extrabold text-white/80 backdrop-blur-xl">
+            <i class="fa-regular fa-clock mr-1.5"></i>18:30
+          </div>
+        </header>
+
+        <section class="mt-auto pb-5 pt-20">
+          <p class="mb-3 w-fit rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-[12px] font-extrabold tracking-[0.16em] text-white/75 backdrop-blur-xl">
+            SEOUL BASEBALL NIGHT · 4 CREW
+          </p>
+          <h1 class="text-[54px] font-black leading-[0.9] tracking-tight text-white drop-shadow-2xl">
+            JAMSIL<br>
+            <span class="bg-gradient-to-r from-white via-[#ffd9a5] to-[#ff8a21] bg-clip-text text-transparent">NIGHT</span>
+            GAME
+          </h1>
+          <p class="mt-4 max-w-[330px] text-[16px] font-semibold leading-7 text-white/72">
+            금요일 저녁, 잠실에서 만나는 키움 히어로즈와 LG 트윈스.
+          </p>
         </section>
 
-        <aside class="scoreboard" aria-label="경기 요약">
-          <div class="score-head">
-            <span>MATCHUP</span>
+        <section class="rounded-[28px] border border-white/15 bg-white/[0.13] p-3 shadow-[0_24px_80px_rgba(0,0,0,.38)] backdrop-blur-2xl">
+          <div class="flex items-center justify-between px-1 pb-3 pt-1 text-[11px] font-black tracking-[0.18em] text-white/45">
+            <span>MATCH TICKET</span>
             <span>SEOUL</span>
           </div>
-          <div class="teams">
-            <div class="team">
-              <span class="badge k">K</span>
-              <span><small>AWAY</small><strong>KIWOOM</strong></span>
-              <span class="side">3B</span>
+
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-2">
+            <div class="rounded-[22px] bg-[#72183b]/90 p-4 text-center shadow-inner shadow-white/10">
+              <p class="text-[10px] font-black tracking-[0.18em] text-white/55">AWAY</p>
+              <p class="mt-2 text-[19px] font-black leading-none">KIWOOM</p>
             </div>
-            <div class="team">
-              <span class="badge l">LG</span>
-              <span><small>HOME</small><strong>LG TWINS</strong></span>
-              <span class="side">HOME</span>
+            <div class="grid size-11 place-items-center rounded-full bg-white text-[12px] font-black text-[#111827] shadow-xl">VS</div>
+            <div class="rounded-[22px] bg-[#c61d38]/90 p-4 text-center shadow-inner shadow-white/10">
+              <p class="text-[10px] font-black tracking-[0.18em] text-white/55">HOME</p>
+              <p class="mt-2 text-[19px] font-black leading-none">LG</p>
             </div>
           </div>
-          <div class="ticket-grid">
-            <div class="ticket-item"><span>DATE</span><strong>5.22 FRI</strong></div>
-            <div class="ticket-item"><span>TIME</span><strong>18:30</strong></div>
-            <div class="ticket-item"><span>VENUE</span><strong>잠실야구장</strong></div>
-            <div class="ticket-item"><span>SEAT</span><strong>220블럭 11열</strong></div>
+
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <div class="rounded-[22px] bg-black/25 p-4">
+              <p class="text-[11px] font-black text-white/45"><i class="fa-regular fa-calendar mr-1.5"></i>DATE</p>
+              <p class="mt-2 text-[18px] font-black">2026.05.22</p>
+              <p class="mt-1 text-[13px] font-bold text-white/55">금요일</p>
+            </div>
+            <div class="rounded-[22px] bg-black/25 p-4">
+              <p class="text-[11px] font-black text-white/45"><i class="fa-regular fa-clock mr-1.5"></i>TIME</p>
+              <p class="mt-2 text-[18px] font-black">18:30</p>
+              <p class="mt-1 text-[13px] font-bold text-white/55">KST</p>
+            </div>
           </div>
-        </aside>
+        </section>
       </div>
+    </section>
 
-      <div class="marquee" aria-label="이벤트 키워드">
-        <span>KIWOOM HEROES</span>
-        <span>LG TWINS</span>
-        <span>JAMSIL BASEBALL STADIUM</span>
-        <span>ORANGE SECTION</span>
-        <span>FRIDAY 18:30</span>
-      </div>
-    </div>
-  </header>
+    <section class="relative z-20 -mt-2 space-y-3 px-5 pb-5">
+      <article class="rounded-[28px] border border-white/10 bg-white/[0.08] p-5 backdrop-blur-2xl">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-[13px] font-black tracking-[0.18em] text-white/40">GAME INFO</h2>
+          <span class="rounded-full bg-emerald-400/15 px-3 py-1 text-[12px] font-extrabold text-emerald-200">CONFIRMED</span>
+        </div>
 
-  <main class="details">
-    <div class="detail-wrap">
-      <article class="panel">
-        <h2>GAME INFO</h2>
-        <ul class="info-list">
-          <li><span class="label">경기</span><span class="value">키움 히어로즈 vs LG 트윈스</span></li>
-          <li><span class="label">일시</span><span class="value">2026년 5월 22일 금요일 18:30</span></li>
-          <li><span class="label">장소</span><span class="value">잠실야구장</span></li>
-          <li><span class="label">인원</span><span class="value">총 4명</span></li>
-        </ul>
+        <div class="space-y-4">
+          <div class="flex gap-3">
+            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
+              <i class="fa-solid fa-baseball-bat-ball"></i>
+            </div>
+            <div>
+              <p class="text-[12px] font-bold text-white/40">매치업</p>
+              <p class="text-[17px] font-black">키움 히어로즈 vs LG 트윈스</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <p class="text-[12px] font-bold text-white/40">장소</p>
+              <p class="text-[17px] font-black">잠실야구장</p>
+            </div>
+          </div>
+
+          <div class="flex gap-3">
+            <div class="grid size-10 shrink-0 place-items-center rounded-2xl bg-white/10 text-white/75">
+              <i class="fa-solid fa-ticket"></i>
+            </div>
+            <div>
+              <p class="text-[12px] font-bold text-white/40">좌석</p>
+              <p class="text-[17px] font-black">220블록 11열</p>
+            </div>
+          </div>
+        </div>
       </article>
 
-      <article class="panel">
-        <h2>SEAT</h2>
-        <p class="seat-title">3루 오렌지석<br>220블럭 11열</p>
-        <p class="seat-note">좌석 번호는 116~119 추정.</p>
-        <span class="seat-chip">응원석 · 오렌지존</span>
+      <article class="rounded-[28px] border border-white/10 bg-gradient-to-br from-white/[0.13] to-white/[0.06] p-5 backdrop-blur-2xl">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <p class="text-[12px] font-black tracking-[0.18em] text-white/40">SEAT ZONE</p>
+            <p class="mt-2 text-[30px] font-black leading-tight">3루<br>오렌지석</p>
+          </div>
+          <div class="rounded-[22px] bg-[#ff8a21] px-4 py-3 text-right text-[#1f1307] shadow-lg shadow-orange-500/20">
+            <p class="text-[11px] font-black opacity-60">BLOCK</p>
+            <p class="text-[24px] font-black leading-none">220</p>
+          </div>
+        </div>
       </article>
-    </div>
+
+      <a href="sms:?&amp;body=%EC%9E%A0%EC%8B%A4%20%EC%A7%81%EA%B4%80%20%EC%B0%B8%EC%84%9D%ED%95%A0%EA%B2%8C!"
+         class="flex w-full items-center justify-center gap-2 rounded-[24px] bg-[#ff8a21] px-5 py-4 text-[17px] font-black text-[#1f1307] shadow-[0_18px_40px_rgba(255,138,33,.32)] transition active:scale-[.98]"
+         aria-label="참석 신청하기">
+        <i class="fa-solid fa-check"></i>
+        참석 신청하기
+      </a>
+
+      <p class="px-1 text-center text-[11px] font-semibold leading-5 text-white/32">
+        공개 공유용 페이지입니다. 결제수단, 계좌번호, 티켓 QR, 토큰 등 민감정보는 포함하지 않았습니다.
+        Photo: Junseong Lee / Unsplash.
+      </p>
+    </section>
   </main>
-
-  <footer>
-    공개 공유용 페이지입니다. 결제수단, 계좌번호, 티켓 QR, 토큰 등 민감정보는 포함하지 않았습니다.
-    Photo: <a href="https://unsplash.com/photos/au0qZblI6Js" target="_blank" rel="noreferrer">Junseong Lee / Unsplash</a>.
-  </footer>
 </body>
 </html>
