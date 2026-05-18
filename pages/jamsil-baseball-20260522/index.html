@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2026년 5월 22일 잠실야구장 키움 히어로즈 원정응원석 직관 공유 티켓">
-  <meta property="og:title" content="JAMSIL NIGHT GAME">
-  <meta property="og:description" content="키움 히어로즈 원정응원석 · 2026.05.22 금요일 18:30 KST · 잠실야구장">
+  <meta name="description" content="2026년 5월 22일 잠실야구장 LG 트윈스 vs 키움 히어로즈 직관 공유 페이지">
+  <meta property="og:title" content="LG TWINS vs KIWOOM HEROES">
+  <meta property="og:description" content="2026.05.22 금요일 18:30 KST · 잠실야구장 · 키움 원정응원석 220블록 11열">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#090a10">
-  <title>JAMSIL NIGHT GAME</title>
+  <meta name="theme-color" content="#07080c">
+  <title>LG TWINS vs KIWOOM HEROES</title>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -27,323 +27,429 @@
     };
   </script>
   <style>
+    :root {
+      color-scheme: dark;
+    }
+
     body {
       font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      letter-spacing: 0;
     }
 
-    @keyframes ticketFloat {
-      0%, 100% { transform: rotate(-1.4deg) translateY(0); }
-      50% { transform: rotate(.8deg) translateY(-7px); }
-    }
+    @keyframes ticketIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px) rotate(-2deg) scale(.98);
+      }
 
-    @keyframes shimmer {
-      0% { transform: translateX(-135%) rotate(12deg); opacity: 0; }
-      18% { opacity: .55; }
-      48%, 100% { transform: translateX(155%) rotate(12deg); opacity: 0; }
-    }
-
-    @keyframes bob {
-      0%, 100% { transform: translateY(0) rotate(var(--r)); }
-      50% { transform: translateY(-8px) rotate(var(--r)); }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotate(-1.2deg) scale(1);
+      }
     }
 
     @keyframes floatHeart {
       0% {
-        transform: translate3d(0, 0, 0) scale(.58) rotate(0deg);
         opacity: 0;
+        transform: translate3d(0, 0, 0) scale(.55) rotate(0deg);
       }
-      16% { opacity: 1; }
+
+      16% {
+        opacity: 1;
+      }
+
       100% {
-        transform: translate3d(var(--heart-x), -148px, 0) scale(1.35) rotate(var(--heart-r));
         opacity: 0;
+        transform: translate3d(var(--heart-x), -142px, 0) scale(1.35) rotate(var(--heart-r));
       }
     }
 
-    .paper {
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 18px 42px rgba(255, 55, 95, .24);
+      }
+
+      50% {
+        box-shadow: 0 22px 54px rgba(255, 196, 95, .32);
+      }
+    }
+
+    .phone-stage {
       background:
-        radial-gradient(circle at 16px 16px, rgba(0,0,0,.035) 0 1px, transparent 1.5px) 0 0 / 18px 18px,
-        linear-gradient(135deg, #fffefb 0%, #f4f0ea 46%, #ffffff 100%);
+        linear-gradient(180deg, rgba(155, 27, 63, .34) 0%, rgba(7, 8, 12, 0) 320px),
+        linear-gradient(180deg, #13131a 0%, #07080c 48%, #040407 100%);
+    }
+
+    .glass {
+      background: rgba(255, 255, 255, .075);
+      border: 1px solid rgba(255, 255, 255, .11);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .ticket-paper {
+      background:
+        radial-gradient(circle at 16px 16px, rgba(0, 0, 0, .04) 0 1px, transparent 1.4px) 0 0 / 18px 18px,
+        linear-gradient(135deg, #fffaf1 0%, #fffdf8 42%, #f0e7da 100%);
     }
 
     .ticket-card {
-      animation: ticketFloat 5.8s ease-in-out infinite;
+      animation: ticketIn .7s cubic-bezier(.2, .9, .2, 1) both;
     }
 
-    .ticket-card::after {
-      animation: shimmer 4.8s ease-in-out infinite;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.38), transparent);
-      content: "";
-      height: 150%;
-      left: -20%;
-      pointer-events: none;
-      position: absolute;
-      top: -25%;
-      width: 42%;
-    }
-
-    .stub-cut::before,
-    .stub-cut::after {
-      background: #08090f;
+    .ticket-cut::before,
+    .ticket-cut::after {
+      background: #07080c;
       border-radius: 9999px;
       content: "";
       height: 30px;
       position: absolute;
       top: -15px;
       width: 30px;
-      z-index: 3;
+      z-index: 4;
     }
 
-    .stub-cut::before { left: -15px; }
-    .stub-cut::after { right: -15px; }
+    .ticket-cut::before {
+      left: -15px;
+    }
 
-    .mascot-bob {
-      animation: bob 4.4s ease-in-out infinite;
+    .ticket-cut::after {
+      right: -15px;
+    }
+
+    .heart-button {
+      animation: glowPulse 2.8s ease-in-out infinite;
     }
 
     .heart-float {
       animation: floatHeart 1.18s cubic-bezier(.18, .86, .38, 1) forwards;
     }
 
+    .post-it {
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .28), transparent 34%),
+        #ffd86d;
+      box-shadow: 0 16px 28px rgba(0, 0, 0, .24);
+      transform: rotate(var(--tilt));
+    }
+
+    .youtube-preview img {
+      transition: transform .35s ease, opacity .35s ease;
+    }
+
+    .youtube-preview:active img {
+      transform: scale(1.04);
+      opacity: .72;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .ticket-card,
-      .ticket-card::after,
-      .mascot-bob,
-      .heart-float {
+      .heart-button,
+      .heart-float,
+      .youtube-preview img {
         animation: none;
+        transition: none;
       }
     }
   </style>
 </head>
-<body class="min-h-screen bg-[#08090f] text-white antialiased">
-  <main class="relative mx-auto min-h-screen w-full max-w-[430px] overflow-hidden bg-[#08090f] shadow-2xl">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_5%,rgba(142,15,59,.44),transparent_28%),radial-gradient(circle_at_86%_18%,rgba(255,138,31,.16),transparent_24%),linear-gradient(180deg,#15151b_0%,#08090f_52%,#040408_100%)]"></div>
-
+<body class="min-h-screen bg-[#07080c] text-white antialiased">
+  <main class="phone-stage relative mx-auto min-h-screen w-full max-w-[390px] overflow-hidden shadow-2xl">
     <section class="relative px-5 pb-5 pt-5">
-      <header class="relative z-10 flex items-center justify-between">
-        <div class="rounded-full border border-white/12 bg-white/8 px-3 py-2 text-[12px] font-black text-white/78 backdrop-blur-xl">
+      <header class="flex items-center justify-between">
+        <div class="rounded-full border border-white/10 bg-white/8 px-3 py-2 text-[12px] font-black text-white/74 backdrop-blur-xl">
           JAMSIL 0522
         </div>
-        <div class="rounded-full border border-[#ffcc66]/25 bg-[#ffcc66]/12 px-3 py-2 text-[12px] font-black text-[#ffe0a3] backdrop-blur-xl">
-          AWAY CHEERING
+        <div class="rounded-full border border-[#ffc45f]/22 bg-[#ffc45f]/12 px-3 py-2 text-[12px] font-black text-[#ffe2a4] backdrop-blur-xl">
+          AWAY
         </div>
       </header>
 
-      <section class="relative z-10 pt-10">
-        <p class="text-[11px] font-black tracking-[0.22em] text-white/38">SEOUL BASEBALL NIGHT</p>
-        <h1 class="mt-3 text-[48px] font-black leading-[.9] tracking-tight">
-          REAL<br>
-          TICKET<br>
-          NIGHT
+      <section class="pt-9">
+        <p class="text-[12px] font-extrabold text-white/44">2026 KBO LEAGUE</p>
+        <h1 class="mt-3 text-[41px] font-black leading-[.96]">
+          LG TWINS<br>
+          <span class="text-[#ffc45f]">vs</span><br>
+          KIWOOM<br>
+          HEROES
         </h1>
-        <p class="mt-4 max-w-[300px] text-[15px] font-semibold leading-6 text-white/58">
-          키움 원정응원석으로 들어가는 금요일 밤 잠실 직관.
+        <p class="mt-4 max-w-[330px] text-[15px] font-semibold leading-6 text-white/68">
+          2026.05.22 금요일 18:30, 잠실야구장. 우리는 3루 쪽 키움 원정응원석에서 봅니다.
         </p>
       </section>
 
-      <section class="relative z-10 mt-8">
-        <div class="absolute left-5 right-5 top-7 h-full rotate-[3.5deg] rounded-[18px] bg-[#c9c3b8]/40 blur-[1px]"></div>
+      <section class="mt-7">
+        <div class="relative mx-auto max-w-[360px]">
+          <div class="absolute inset-x-5 top-7 h-full rotate-[2.8deg] rounded-[20px] bg-[#b7afa2]/34 blur-[1px]"></div>
 
-        <article class="ticket-card paper relative overflow-hidden rounded-[18px] text-[#15151a] shadow-[0_28px_70px_rgba(0,0,0,.45)]">
-          <div class="relative h-[238px] overflow-hidden bg-[#171820]">
-            <img src="./assets/jamsil-stadium-unsplash.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-45">
-            <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,.34)_0%,rgba(0,0,0,.08)_42%,rgba(0,0,0,.76)_100%)]"></div>
-            <div class="absolute left-4 top-4 rounded-sm bg-white px-2 py-1 text-[11px] font-black tracking-tight text-[#15151a]">NO. 0522</div>
-            <div class="absolute right-4 top-4 text-right text-[10px] font-black leading-tight tracking-[0.16em] text-white/70">
-              KIWOOM<br>AWAY SEAT
-            </div>
-
-            <img src="./assets/tukdori.png" alt="턱돌이" class="mascot-bob absolute -bottom-8 -left-16 h-[245px] w-[245px] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.42)]" style="--r:-8deg">
-            <img src="./assets/dongle.png" alt="동글이" class="mascot-bob absolute -bottom-5 right-[-54px] h-[220px] w-[220px] object-contain drop-shadow-[0_16px_18px_rgba(0,0,0,.38)]" style="--r:7deg; animation-delay:-1.4s">
-            <img src="./assets/lg-mascots.png" alt="LG 트윈스 마스코트" class="absolute bottom-3 left-1/2 h-[86px] w-[86px] -translate-x-1/2 rounded-[16px] bg-white/90 p-1.5 object-contain shadow-xl">
-
-            <div class="absolute bottom-4 left-4">
-              <p class="text-[10px] font-black tracking-[0.18em] text-white/58">2026 SHINHAN SOL KBO LEAGUE</p>
-              <p class="mt-1 text-[23px] font-black text-white">KIWOOM vs LG</p>
-            </div>
-          </div>
-
-          <div class="px-5 pb-5 pt-4">
-            <div class="grid grid-cols-[1fr_auto] items-start gap-3">
+          <article class="ticket-card ticket-paper relative overflow-hidden rounded-[20px] text-[#15151a] shadow-[0_30px_74px_rgba(0,0,0,.48)]">
+            <div class="flex items-center justify-between bg-[#15151a] px-4 py-3 text-white">
               <div>
-                <p class="text-[11px] font-black tracking-[0.18em] text-[#9b1b3f]">JAMSIL NIGHT GAME</p>
-                <h2 class="mt-1 text-[30px] font-black leading-none tracking-tight">키움 원정응원석</h2>
+                <p class="text-[10px] font-black text-white/42">NO. 0522</p>
+                <p class="mt-0.5 text-[14px] font-black">JAMSIL BASEBALL STADIUM</p>
               </div>
-              <div class="rounded-md border border-[#111]/10 bg-[#111] px-2.5 py-2 text-center text-white">
-                <p class="text-[9px] font-black opacity-55">BLOCK</p>
-                <p class="text-[22px] font-black leading-none">220</p>
+              <div class="rounded-full bg-[#ffc45f] px-3 py-1 text-[12px] font-black text-[#221306]">
+                3루 원정
               </div>
             </div>
 
-            <div class="my-5 border-t border-dashed border-[#15151a]/22"></div>
+            <div class="relative h-[214px] overflow-hidden bg-[#202129]">
+              <img src="./assets/jamsil-stadium-unsplash.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-32">
+              <div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,10,14,.58)_0%,rgba(10,10,14,.12)_47%,rgba(10,10,14,.58)_100%)]"></div>
 
-            <div class="grid grid-cols-2 gap-x-4 gap-y-4">
-              <div>
-                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">DATE</p>
-                <p class="mt-1 text-[18px] font-black">2026.05.22</p>
-                <p class="text-[12px] font-extrabold text-[#15151a]/48">금요일</p>
+              <img src="./assets/tukdori.png" alt="키움 턱돌이" class="absolute -bottom-8 -left-16 h-[214px] w-[214px] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.42)]">
+              <img src="./assets/dongle.png" alt="키움 동글이" class="absolute -bottom-4 right-[-42px] h-[194px] w-[194px] object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,.38)]">
+              <img src="./assets/lg-mascots.png" alt="LG 트윈스 마스코트" class="absolute bottom-4 left-1/2 h-[82px] w-[82px] -translate-x-1/2 rounded-[16px] bg-white/94 p-1.5 object-contain shadow-xl">
+            </div>
+
+            <div class="px-5 pb-5 pt-5">
+              <div class="grid grid-cols-[1fr_auto] items-start gap-3">
+                <div>
+                  <p class="text-[11px] font-black text-[#9b1b3f]">MATCH</p>
+                  <h2 class="mt-1 text-[29px] font-black leading-tight">LG 트윈스<br>vs 키움 히어로즈</h2>
+                </div>
+                <div class="rounded-lg border border-[#111]/10 bg-[#111] px-2.5 py-2 text-center text-white">
+                  <p class="text-[9px] font-black opacity-55">BLOCK</p>
+                  <p class="text-[23px] font-black leading-none">220</p>
+                </div>
               </div>
-              <div>
-                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">TIME</p>
-                <p class="mt-1 text-[18px] font-black">18:30</p>
-                <p class="text-[12px] font-extrabold text-[#15151a]/48">KST</p>
-              </div>
-              <div>
-                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">VENUE</p>
-                <p class="mt-1 text-[18px] font-black">잠실야구장</p>
-                <p class="text-[12px] font-extrabold text-[#15151a]/48">서울</p>
-              </div>
-              <div>
-                <p class="text-[10px] font-black tracking-[0.16em] text-[#15151a]/38">SEAT</p>
-                <p class="mt-1 text-[18px] font-black">11열</p>
-                <p class="text-[12px] font-extrabold text-[#15151a]/48">3루 원정응원석</p>
+
+              <div class="my-5 border-t border-dashed border-[#15151a]/22"></div>
+
+              <div class="grid grid-cols-2 gap-x-4 gap-y-4">
+                <div>
+                  <p class="text-[10px] font-black text-[#15151a]/38">DATE</p>
+                  <p class="mt-1 text-[18px] font-black">2026.05.22</p>
+                  <p class="text-[12px] font-extrabold text-[#15151a]/48">금요일</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-black text-[#15151a]/38">TIME</p>
+                  <p class="mt-1 text-[18px] font-black">18:30</p>
+                  <p class="text-[12px] font-extrabold text-[#15151a]/48">KST</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-black text-[#15151a]/38">VENUE</p>
+                  <p class="mt-1 text-[18px] font-black">잠실야구장</p>
+                  <p class="text-[12px] font-extrabold text-[#15151a]/48">서울</p>
+                </div>
+                <div>
+                  <p class="text-[10px] font-black text-[#15151a]/38">SEAT</p>
+                  <p class="mt-1 text-[18px] font-black">11열</p>
+                  <p class="text-[12px] font-extrabold text-[#15151a]/48">3루 왼쪽</p>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="stub-cut relative border-t border-dashed border-[#15151a]/20 bg-[#f0ebe3] px-5 py-4">
-            <div class="flex items-center justify-between">
-              <div>
-                <p class="text-[10px] font-black tracking-[0.2em] text-[#15151a]/42">CREW PASS</p>
-                <p class="mt-1 text-[17px] font-black">4 CREW · AWAY SIDE</p>
-              </div>
-              <div class="grid size-11 place-items-center rounded-full bg-[#9b1b3f] text-[20px] text-white">
-                <i class="fa-solid fa-baseball"></i>
+            <div class="ticket-cut relative border-t border-dashed border-[#15151a]/20 bg-[#efe7dc] px-5 py-4">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-[10px] font-black text-[#15151a]/42">CREW PASS</p>
+                  <p class="mt-1 text-[17px] font-black">4 CREW · KIWOOM AWAY</p>
+                </div>
+                <div class="grid size-11 place-items-center rounded-full bg-[#9b1b3f] text-[20px] text-white">
+                  <i class="fa-solid fa-baseball"></i>
+                </div>
               </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
       </section>
     </section>
 
-    <section class="relative z-10 space-y-4 px-5 pb-6">
-      <article class="rounded-[18px] border border-white/10 bg-white/[0.07] p-5 backdrop-blur-2xl">
-        <div class="flex items-center justify-between gap-3">
+    <section class="relative space-y-4 px-5 pb-7">
+      <article class="glass rounded-[20px] p-5">
+        <div class="flex items-start justify-between gap-4">
           <div>
-            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">GAME INFO</p>
-            <p class="mt-2 text-[24px] font-black leading-tight">장소, 시간, 좌석만<br>딱 보기 좋게</p>
+            <p class="text-[11px] font-black text-white/36">GAME INFO</p>
+            <h2 class="mt-2 text-[25px] font-black leading-tight">장소, 시간, 좌석</h2>
           </div>
-          <div class="rounded-[14px] bg-[#9b1b3f]/25 px-3 py-2 text-right">
-            <p class="text-[10px] font-black text-white/42">TEAM</p>
-            <p class="text-[16px] font-black text-[#ffc45f]">KIWOOM</p>
+          <div class="rounded-[14px] bg-[#ffc45f]/14 px-3 py-2 text-right">
+            <p class="text-[10px] font-black text-white/42">우리 응원</p>
+            <p class="text-[16px] font-black text-[#ffc45f]">키움</p>
           </div>
         </div>
 
         <div class="mt-5 space-y-3">
-          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
-            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-baseball-bat-ball"></i></div>
+          <div class="flex items-center gap-3 rounded-[16px] bg-black/24 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/72"><i class="fa-solid fa-baseball-bat-ball"></i></div>
             <div>
               <p class="text-[12px] font-bold text-white/38">매치업</p>
-              <p class="text-[16px] font-black">키움 히어로즈 vs LG 트윈스</p>
+              <p class="text-[16px] font-black">LG 트윈스 vs 키움 히어로즈</p>
             </div>
           </div>
-          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
-            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="flex items-center gap-3 rounded-[16px] bg-black/24 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/72"><i class="fa-solid fa-location-dot"></i></div>
             <div>
-              <p class="text-[12px] font-bold text-white/38">장소</p>
-              <p class="text-[16px] font-black">잠실야구장 · 3루 원정응원석</p>
+              <p class="text-[12px] font-bold text-white/38">응원 위치</p>
+              <p class="text-[16px] font-black">잠실 3루 쪽, 관중석 기준 왼쪽</p>
             </div>
           </div>
-          <div class="flex items-center gap-3 rounded-[14px] bg-black/22 p-3">
-            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/70"><i class="fa-solid fa-ticket"></i></div>
+          <div class="flex items-center gap-3 rounded-[16px] bg-black/24 p-3">
+            <div class="grid size-9 place-items-center rounded-[12px] bg-white/10 text-white/72"><i class="fa-solid fa-ticket"></i></div>
             <div>
               <p class="text-[12px] font-bold text-white/38">좌석</p>
-              <p class="text-[16px] font-black">220블록 11열</p>
+              <p class="text-[16px] font-black">키움 원정응원석 · 220블록 11열</p>
             </div>
           </div>
         </div>
       </article>
 
-      <section class="rounded-[18px] border border-white/10 bg-white/[0.07] p-5 backdrop-blur-2xl">
+      <section class="glass rounded-[20px] p-5">
         <div class="mb-4 flex items-end justify-between">
           <div>
-            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">CHANT PREVIEW</p>
+            <p class="text-[11px] font-black text-white/36">CHANT PREVIEW</p>
             <h2 class="mt-2 text-[24px] font-black">응원가 미리보기</h2>
           </div>
           <i class="fa-brands fa-youtube text-[28px] text-[#ff375f]"></i>
         </div>
 
         <div class="space-y-4">
-          <article class="overflow-hidden rounded-[16px] bg-black/28">
+          <article class="overflow-hidden rounded-[18px] bg-black/28">
             <div class="flex items-center justify-between px-4 py-3">
               <div>
-                <p class="text-[10px] font-black tracking-[0.18em] text-white/34">LG TWINS</p>
+                <p class="text-[10px] font-black text-white/34">LG TWINS</p>
                 <p class="text-[16px] font-black">오스틴 딘 응원가</p>
               </div>
               <span class="rounded-full bg-[#c30452]/24 px-3 py-1 text-[12px] font-black text-[#ffb0c8]">HOME</span>
             </div>
-            <iframe
-              class="aspect-[9/16] w-full"
-              src="https://www.youtube.com/embed/5rSAkmll26I"
-              title="LG 오스틴 딘 응원가 Shorts"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+            <button
+              type="button"
+              class="youtube-preview relative block aspect-video w-full overflow-hidden text-left"
+              data-youtube="5rSAkmll26I"
+              aria-label="LG 오스틴 딘 응원가 재생"
+            >
+              <img src="https://i.ytimg.com/vi/5rSAkmll26I/hqdefault.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-80">
+              <span class="absolute inset-0 bg-gradient-to-t from-black/74 via-black/12 to-transparent"></span>
+              <span class="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[12px] font-black text-white backdrop-blur">SHORTS</span>
+              <span class="absolute inset-0 grid place-items-center">
+                <span class="grid size-16 place-items-center rounded-full bg-[#ff0033] text-[26px] text-white shadow-2xl">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </span>
+              </span>
+            </button>
           </article>
 
-          <article class="overflow-hidden rounded-[16px] bg-black/28">
+          <article class="overflow-hidden rounded-[18px] bg-black/28">
             <div class="flex items-center justify-between px-4 py-3">
               <div>
-                <p class="text-[10px] font-black tracking-[0.18em] text-white/34">KIWOOM HEROES</p>
+                <p class="text-[10px] font-black text-white/34">KIWOOM HEROES</p>
                 <p class="text-[16px] font-black">서건창 응원가</p>
               </div>
               <span class="rounded-full bg-[#9b1b3f]/30 px-3 py-1 text-[12px] font-black text-[#ffc45f]">AWAY</span>
             </div>
-            <iframe
-              class="aspect-[9/16] w-full"
-              src="https://www.youtube.com/embed/xuQ3UCPF9dk"
-              title="서건창 응원가 Shorts"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
+            <button
+              type="button"
+              class="youtube-preview relative block aspect-video w-full overflow-hidden text-left"
+              data-youtube="xuQ3UCPF9dk"
+              aria-label="서건창 응원가 재생"
+            >
+              <img src="https://i.ytimg.com/vi/xuQ3UCPF9dk/hqdefault.jpg" alt="" class="absolute inset-0 h-full w-full object-cover opacity-80">
+              <span class="absolute inset-0 bg-gradient-to-t from-black/74 via-black/12 to-transparent"></span>
+              <span class="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[12px] font-black text-white backdrop-blur">SHORTS</span>
+              <span class="absolute inset-0 grid place-items-center">
+                <span class="grid size-16 place-items-center rounded-full bg-[#ff0033] text-[26px] text-white shadow-2xl">
+                  <i class="fa-solid fa-play ml-1"></i>
+                </span>
+              </span>
+            </button>
           </article>
         </div>
       </section>
 
-      <section class="relative overflow-hidden rounded-[18px] border border-white/10 bg-white/[0.08] p-5 shadow-[0_18px_60px_rgba(0,0,0,.3)] backdrop-blur-2xl">
+      <section class="glass relative overflow-hidden rounded-[20px] p-5">
         <div id="heartLayer" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
 
         <div class="relative flex items-center justify-between gap-4">
           <div>
-            <p class="text-[11px] font-black tracking-[0.18em] text-white/36">LIVE REACTION</p>
-            <p class="mt-2 text-[25px] font-black leading-tight">하트 날리고<br>출발하기</p>
-            <p class="mt-2 text-[13px] font-semibold text-white/46">누르면 하트가 올라가요.</p>
+            <p class="text-[11px] font-black text-white/36">LIVE REACTION</p>
+            <h2 class="mt-2 text-[25px] font-black leading-tight">다 같이<br>하트 누르기</h2>
+            <p id="heartStatus" class="mt-2 text-[13px] font-semibold text-white/46">공유 하트 불러오는 중</p>
           </div>
 
           <button
             id="heartButton"
             type="button"
-            class="grid size-[86px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff375f] via-[#ff6b4a] to-[#ffc45f] text-[35px] text-white shadow-[0_20px_44px_rgba(255,55,95,.32)] transition duration-150 active:scale-95"
-            aria-label="응원 하트 날리기"
+            class="heart-button grid size-[86px] shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#ff375f] via-[#ff6b4a] to-[#ffc45f] text-[35px] text-white transition duration-150 active:scale-95"
+            aria-label="응원 하트 누르기"
           >
             <i class="fa-solid fa-heart"></i>
           </button>
         </div>
 
-        <div class="relative mt-4 flex items-center justify-between rounded-[14px] border border-white/10 bg-black/25 px-4 py-3">
-          <span class="text-[11px] font-black tracking-[0.18em] text-white/38">HEARTS</span>
+        <div class="relative mt-4 flex items-center justify-between rounded-[16px] border border-white/10 bg-black/26 px-4 py-3">
+          <span class="text-[11px] font-black text-white/38">SHARED HEARTS</span>
           <strong id="heartCount" class="text-[22px] font-black leading-none">0</strong>
         </div>
       </section>
 
+      <section class="glass rounded-[20px] p-5">
+        <div class="mb-4">
+          <p class="text-[11px] font-black text-white/36">POST-IT BOARD</p>
+          <h2 class="mt-2 text-[24px] font-black">한줄 기대 남기기</h2>
+        </div>
+
+        <form id="noteForm" class="flex gap-2">
+          <input
+            id="noteInput"
+            type="text"
+            maxlength="42"
+            class="min-w-0 flex-1 rounded-[16px] border border-white/10 bg-black/26 px-4 py-3 text-[14px] font-bold text-white outline-none placeholder:text-white/28 focus:border-[#ffc45f]/60"
+            placeholder="예: 7회 전에 떼창 준비"
+            aria-label="기대 한줄 입력"
+          >
+          <button type="submit" class="rounded-[16px] bg-[#ffc45f] px-4 py-3 text-[14px] font-black text-[#211506] transition active:scale-95">
+            붙이기
+          </button>
+        </form>
+
+        <p id="noteStatus" class="mt-3 text-[12px] font-semibold text-white/38">공유 메모 불러오는 중</p>
+        <div id="noteList" class="mt-4 grid grid-cols-2 gap-3"></div>
+      </section>
+
       <p class="px-1 text-center text-[11px] font-semibold leading-5 text-white/30">
-        공개 공유용 페이지입니다. 결제수단, 계좌번호, 티켓 QR, 토큰 등 민감정보는 포함하지 않았습니다.
+        공개 공유용 페이지입니다. 결제수단, 계좌번호, 티켓 QR, 토큰 등 민감정보는 포함하지 않습니다.
       </p>
     </section>
   </main>
 
   <script>
     (() => {
+      const NAMESPACE = "iamsloth-share-pages-jamsil-20260522-v1";
+      const API_BASE = `https://mantledb.sh/v2/${NAMESPACE}`;
+      const LIST_API = `https://mantledb.sh/v2/list/${NAMESPACE}`;
+      const INCREMENT_API = `https://mantledb.sh/v2/increment/${NAMESPACE}/reactions`;
+      const LOCAL_HEARTS = "jamsil-20260522-local-hearts";
+      const LOCAL_NOTES = "jamsil-20260522-local-notes";
+
       const button = document.getElementById("heartButton");
       const layer = document.getElementById("heartLayer");
       const countEl = document.getElementById("heartCount");
-      const storageKey = "jamsil-ticket-heart-count";
+      const heartStatus = document.getElementById("heartStatus");
+      const noteForm = document.getElementById("noteForm");
+      const noteInput = document.getElementById("noteInput");
+      const noteList = document.getElementById("noteList");
+      const noteStatus = document.getElementById("noteStatus");
+      const youtubePreviews = document.querySelectorAll(".youtube-preview");
       const colors = ["#ff375f", "#ff8a21", "#ffc45f", "#ffffff", "#9b1b3f"];
-      let count = Number(localStorage.getItem(storageKey) || 0);
 
-      const paintCount = () => {
-        countEl.textContent = count.toLocaleString("ko-KR");
+      const safeJson = async (response) => {
+        if (!response.ok) {
+          const error = new Error("request failed");
+          error.status = response.status;
+          throw error;
+        }
+        return response.json();
+      };
+
+      const paintCount = (count) => {
+        countEl.textContent = Number(count || 0).toLocaleString("ko-KR");
+      };
+
+      const getLocalHearts = () => Number(localStorage.getItem(LOCAL_HEARTS) || 0);
+
+      const setLocalHearts = (count) => {
+        localStorage.setItem(LOCAL_HEARTS, String(count));
+        paintCount(count);
       };
 
       const makeHeart = () => {
@@ -364,17 +470,175 @@
         window.setTimeout(() => heart.remove(), 1300);
       };
 
-      paintCount();
+      const loadHeart = async () => {
+        try {
+          const response = await fetch(`${API_BASE}/reactions?t=${Date.now()}`, { cache: "no-store" });
+          if (response.status === 404) {
+            paintCount(0);
+            heartStatus.textContent = "모두가 같이 보는 공유 하트";
+            return;
+          }
 
-      button.addEventListener("click", () => {
-        count += 1;
-        localStorage.setItem(storageKey, String(count));
-        paintCount();
+          const data = await safeJson(response);
+          paintCount(data.hearts);
+          heartStatus.textContent = "모두가 같이 보는 공유 하트";
+        } catch {
+          paintCount(getLocalHearts());
+          heartStatus.textContent = "연결 실패. 이 기기에서만 임시 표시";
+        }
+      };
 
+      const upHeartCount = async () => {
+        const response = await fetch(`${INCREMENT_API}?t=${Date.now()}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ key: "hearts", by: 1 }),
+          cache: "no-store"
+        });
+        return safeJson(response);
+      };
+
+      button.addEventListener("click", async () => {
         for (let i = 0; i < 7; i += 1) {
           window.setTimeout(makeHeart, i * 45);
         }
+
+        try {
+          const data = await upHeartCount();
+          paintCount(data.hearts);
+          heartStatus.textContent = "모두가 같이 보는 공유 하트";
+        } catch {
+          setLocalHearts(getLocalHearts() + 1);
+          heartStatus.textContent = "연결 실패. 이 기기에서만 임시 표시";
+        }
       });
+
+      const cleanNote = (value) => value
+        .replace(/[<>]/g, "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 42);
+
+      const getLocalNotes = () => {
+        try {
+          const notes = JSON.parse(localStorage.getItem(LOCAL_NOTES) || "[]");
+          return Array.isArray(notes) ? notes : [];
+        } catch {
+          return [];
+        }
+      };
+
+      const setLocalNotes = (notes) => {
+        localStorage.setItem(LOCAL_NOTES, JSON.stringify(notes.slice(-12)));
+      };
+
+      const fetchNotes = async () => {
+        const listResponse = await fetch(`${LIST_API}?t=${Date.now()}`, { cache: "no-store" });
+        if (listResponse.status === 404) return [];
+
+        const listData = await safeJson(listResponse);
+        const entries = Array.isArray(listData.entries) ? listData.entries : [];
+        const noteEntries = entries
+          .filter((entry) => typeof entry.path === "string" && entry.path.startsWith("notes/"))
+          .sort((a, b) => Number(b.updated_at || 0) - Number(a.updated_at || 0))
+          .slice(0, 10);
+
+        const notes = await Promise.all(noteEntries.map(async (entry) => {
+          const response = await fetch(`${API_BASE}/${entry.path}?t=${Date.now()}`, { cache: "no-store" });
+          const note = await safeJson(response);
+          return {
+            text: cleanNote(note.text || ""),
+            ts: Number(note.ts || entry.updated_at || 0)
+          };
+        }));
+
+        return notes.filter((note) => note.text);
+      };
+
+      const saveNote = async (text) => {
+        const id = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+        const response = await fetch(`${API_BASE}/notes/${id}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, ts: Date.now() }),
+          cache: "no-store"
+        });
+        return safeJson(response);
+      };
+
+      const renderNotes = (notes, isLocal = false) => {
+        noteList.innerHTML = "";
+        const recent = notes.slice(0, 10);
+
+        if (recent.length === 0) {
+          noteStatus.textContent = isLocal ? "연결 실패. 이 기기 임시 메모만 표시" : "아직 붙은 포스트잇이 없어요";
+          return;
+        }
+
+        noteStatus.textContent = isLocal ? "연결 실패. 이 기기 임시 메모만 표시" : "익명으로 붙인 공유 포스트잇";
+        recent.forEach((note, index) => {
+          const card = document.createElement("article");
+          card.className = "post-it min-h-[96px] rounded-[12px] p-3 text-[#2b2309]";
+          card.style.setProperty("--tilt", index % 2 === 0 ? "-1.5deg" : "1.5deg");
+
+          const text = document.createElement("p");
+          text.className = "text-[14px] font-black leading-5";
+          text.textContent = note.text;
+
+          const meta = document.createElement("p");
+          meta.className = "mt-3 text-[10px] font-black text-[#2b2309]/45";
+          meta.textContent = "익명 포스트잇";
+
+          card.append(text, meta);
+          noteList.appendChild(card);
+        });
+      };
+
+      const loadNotes = async () => {
+        try {
+          renderNotes(await fetchNotes());
+        } catch {
+          renderNotes(getLocalNotes(), true);
+        }
+      };
+
+      noteForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const text = cleanNote(noteInput.value);
+        if (!text) return;
+
+        noteInput.value = "";
+        noteStatus.textContent = "포스트잇 붙이는 중";
+
+        try {
+          await saveNote(text);
+          renderNotes(await fetchNotes());
+        } catch {
+          const localNotes = [{ text, ts: Date.now() }, ...getLocalNotes()].slice(0, 10);
+          setLocalNotes(localNotes);
+          renderNotes(localNotes, true);
+        }
+      });
+
+      youtubePreviews.forEach((preview) => {
+        preview.addEventListener("click", () => {
+          const id = preview.dataset.youtube;
+          if (!id) return;
+
+          const iframe = document.createElement("iframe");
+          iframe.className = "aspect-video w-full";
+          iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+          iframe.title = preview.getAttribute("aria-label") || "YouTube Shorts";
+          iframe.loading = "lazy";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+
+          preview.replaceWith(iframe);
+        });
+      });
+
+      loadHeart();
+      loadNotes();
     })();
   </script>
 </body>
