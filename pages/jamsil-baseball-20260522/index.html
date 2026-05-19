@@ -84,6 +84,16 @@
       }
     }
 
+    @keyframes marqueeReverse {
+      from {
+        transform: translateX(-50%);
+      }
+
+      to {
+        transform: translateX(0);
+      }
+    }
+
     @keyframes mascotTap {
       0%, 100% {
         transform: translateY(0) rotate(var(--tilt, 0deg));
@@ -103,6 +113,40 @@
       50% {
         opacity: 1;
         transform: scale(1.08);
+      }
+    }
+
+    @keyframes stubTear {
+      0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+
+      22% {
+        transform: translate3d(-4px, 4px, 0) rotate(-2.2deg);
+      }
+
+      55% {
+        transform: translate3d(9px, 15px, 0) rotate(5.4deg);
+      }
+
+      100% {
+        transform: translate3d(9px, 22px, 0) rotate(4.2deg);
+      }
+    }
+
+    @keyframes tearBit {
+      0% {
+        opacity: 0;
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(.7);
+      }
+
+      18% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate3d(var(--tear-x), var(--tear-y), 0) rotate(var(--tear-r)) scale(1);
       }
     }
 
@@ -140,6 +184,54 @@
       transform: rotate(-.2deg) translateY(1px) scale(.992);
     }
 
+    .ticket-card.is-tearing .ticket-stub {
+      animation: stubTear .64s cubic-bezier(.16, .8, .28, 1) forwards;
+    }
+
+    .ticket-card.is-torn .ticket-stub {
+      box-shadow: 0 18px 35px rgba(0, 0, 0, .28);
+      transform: translate3d(9px, 22px, 0) rotate(4.2deg);
+    }
+
+    .ticket-card.is-torn .tear-status {
+      color: #9b1b3f;
+    }
+
+    .ticket-stub {
+      cursor: grab;
+      touch-action: pan-y;
+      transform-origin: 50% 0;
+      transition: box-shadow .25s ease, transform .25s ease;
+      user-select: none;
+    }
+
+    .ticket-stub:active {
+      cursor: grabbing;
+    }
+
+    .tear-button {
+      transition: background-color .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .tear-button:hover {
+      background: #ffc45f;
+      color: #211506;
+      transform: translateY(-1px);
+    }
+
+    .tear-confetti {
+      pointer-events: none;
+    }
+
+    .tear-piece {
+      animation: tearBit .86s cubic-bezier(.17, .84, .38, 1) forwards;
+      background: var(--tear-bg);
+      border-radius: 2px;
+      height: 9px;
+      position: absolute;
+      width: 12px;
+    }
+
     .ticket-cut::before,
     .ticket-cut::after {
       background: #07080c;
@@ -173,22 +265,96 @@
       animation: floatHeart 1.18s cubic-bezier(.18, .86, .38, 1) forwards;
     }
 
-    .team-marquee {
-      mask-image: linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%);
-      -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 11%, #000 89%, transparent 100%);
+    .tape-stage {
+      height: 124px;
+      isolation: isolate;
+      margin-inline: -20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .tape-stage::before {
+      background: radial-gradient(circle, rgba(255, 255, 255, .16) 0 1px, transparent 1.6px) 0 0 / 13px 13px;
+      content: "";
+      inset: 20px 18px;
+      opacity: .24;
+      position: absolute;
+    }
+
+    .diagonal-tape {
+      border: 2px solid rgba(255, 255, 255, .16);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, .25);
+      left: -64px;
+      overflow: hidden;
+      position: absolute;
+      right: -64px;
+      white-space: nowrap;
+    }
+
+    .diagonal-tape::after {
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+      content: "";
+      inset: 0;
+      opacity: .4;
+      position: absolute;
+    }
+
+    .tape-lg {
+      background: #c30452;
+      color: #fff;
+      top: 32px;
+      transform: rotate(-9deg);
+      z-index: 2;
+    }
+
+    .tape-kiwoom {
+      background: #5d1028;
+      border-color: rgba(255, 98, 166, .32);
+      color: #fff;
+      top: 58px;
+      transform: rotate(9deg);
+      z-index: 3;
+    }
+
+    .tape-black {
+      background: #06070a;
+      border-color: rgba(195, 4, 82, .55);
+      color: #fff;
+      top: 71px;
+      transform: rotate(-4deg);
+      z-index: 1;
     }
 
     .marquee-track {
-      animation: marquee 18s linear infinite;
+      animation: marquee 13s linear infinite;
+      display: flex;
+      gap: 14px;
+      padding-block: 8px;
       width: max-content;
     }
 
-    .team-marquee:hover .marquee-track {
+    .marquee-track.reverse {
+      animation-name: marqueeReverse;
+      animation-duration: 15s;
+    }
+
+    .tape-stage:hover .marquee-track {
       animation-play-state: paused;
     }
 
-    .team-pill {
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2);
+    .tape-word {
+      align-items: center;
+      display: inline-flex;
+      font-size: 13px;
+      font-weight: 950;
+      gap: 8px;
+      line-height: 1;
+      text-shadow: 0 2px 0 rgba(0, 0, 0, .28);
+    }
+
+    .tape-word.outline {
+      color: transparent;
+      -webkit-text-stroke: 1px currentColor;
     }
 
     .pulse-dot {
@@ -251,6 +417,8 @@
       .heart-button,
       .heart-float,
       .marquee-track,
+      .ticket-stub,
+      .tear-piece,
       .mascot-pop,
       .pulse-dot,
       .youtube-preview img {
@@ -284,20 +452,54 @@
           2026.05.22 금요일 18:30, 잠실야구장. 우리는 3루 쪽 키움 원정응원석에서 봅니다.
         </p>
 
-        <div class="team-marquee mt-5 overflow-hidden rounded-full border border-white/10 bg-black/24">
-          <div class="marquee-track flex items-center gap-2 py-2 text-[12px] font-black">
-            <span class="team-pill rounded-full bg-[#8a1538] px-3 py-1 text-[#ffd66b]">KIWOOM AWAY</span>
-            <span class="pulse-dot size-1.5 rounded-full bg-[#ffd66b]"></span>
-            <span class="team-pill rounded-full bg-[#c30452] px-3 py-1 text-white">LG HOME</span>
-            <span class="text-white/42">JAMSIL 0522</span>
-            <span class="team-pill rounded-full bg-white px-3 py-1 text-[#15151a]">220 BLOCK</span>
-            <span class="text-[#ffd66b]">ROW 11 · 116~119</span>
-            <span class="team-pill rounded-full bg-[#8a1538] px-3 py-1 text-[#ffd66b]">KIWOOM AWAY</span>
-            <span class="pulse-dot size-1.5 rounded-full bg-[#c30452]"></span>
-            <span class="team-pill rounded-full bg-[#c30452] px-3 py-1 text-white">LG HOME</span>
-            <span class="text-white/42">JAMSIL 0522</span>
-            <span class="team-pill rounded-full bg-white px-3 py-1 text-[#15151a]">220 BLOCK</span>
-            <span class="text-[#ffd66b] pr-2">ROW 11 · 116~119</span>
+        <div class="tape-stage mt-5" aria-label="LG와 키움 팀 컬러 마키">
+          <div class="diagonal-tape tape-lg">
+            <div class="marquee-track">
+              <span class="tape-word">LG TWINS</span>
+              <span class="tape-word">SEOUL</span>
+              <span class="tape-word">HOME</span>
+              <span class="tape-word">LG TWINS</span>
+              <span class="tape-word">SEOUL</span>
+              <span class="tape-word">HOME</span>
+              <span class="tape-word">LG TWINS</span>
+              <span class="tape-word">SEOUL</span>
+              <span class="tape-word">HOME</span>
+              <span class="tape-word">LG TWINS</span>
+              <span class="tape-word">SEOUL</span>
+              <span class="tape-word">HOME</span>
+            </div>
+          </div>
+          <div class="diagonal-tape tape-kiwoom">
+            <div class="marquee-track reverse">
+              <span class="tape-word">KIWOOM HEROES</span>
+              <span class="tape-word">AWAY</span>
+              <span class="tape-word">HEROES</span>
+              <span class="tape-word">KIWOOM HEROES</span>
+              <span class="tape-word">AWAY</span>
+              <span class="tape-word">HEROES</span>
+              <span class="tape-word">KIWOOM HEROES</span>
+              <span class="tape-word">AWAY</span>
+              <span class="tape-word">HEROES</span>
+              <span class="tape-word">KIWOOM HEROES</span>
+              <span class="tape-word">AWAY</span>
+              <span class="tape-word">HEROES</span>
+            </div>
+          </div>
+          <div class="diagonal-tape tape-black">
+            <div class="marquee-track">
+              <span class="tape-word">JAMSIL NIGHT</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#c30452]"></span>
+              <span class="tape-word">FRIDAY 18:30</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#ffc45f]"></span>
+              <span class="tape-word">JAMSIL NIGHT</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#c30452]"></span>
+              <span class="tape-word">FRIDAY 18:30</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#ffc45f]"></span>
+              <span class="tape-word">JAMSIL NIGHT</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#c30452]"></span>
+              <span class="tape-word">FRIDAY 18:30</span>
+              <span class="pulse-dot size-1.5 rounded-full bg-[#ffc45f]"></span>
+            </div>
           </div>
         </div>
       </section>
@@ -306,7 +508,8 @@
         <div class="relative mx-auto max-w-[360px]">
           <div class="absolute inset-x-5 top-7 h-full rotate-[2.8deg] rounded-[20px] bg-[#b7afa2]/34 blur-[1px]"></div>
 
-          <article class="ticket-card ticket-paper relative overflow-hidden rounded-[20px] text-[#15151a] shadow-[0_30px_74px_rgba(0,0,0,.48)]">
+          <article id="ticketCard" class="ticket-card ticket-paper relative overflow-hidden rounded-[20px] text-[#15151a] shadow-[0_30px_74px_rgba(0,0,0,.48)]">
+            <div id="tearConfetti" class="tear-confetti absolute inset-0 z-20"></div>
             <div class="flex items-center justify-between bg-[#15151a] px-4 py-3 text-white">
               <div>
                 <p class="text-[10px] font-black text-white/42">NO. 0522</p>
@@ -364,15 +567,16 @@
               </div>
             </div>
 
-            <div class="ticket-cut relative border-t border-dashed border-[#15151a]/20 bg-[#efe7dc] px-5 py-4">
+            <div id="ticketStub" class="ticket-cut ticket-stub relative border-t border-dashed border-[#15151a]/20 bg-[#efe7dc] px-5 py-4">
               <div class="flex items-center justify-between gap-4">
                 <div>
                   <p class="text-[10px] font-black text-[#15151a]/42">CREW PASS</p>
                   <p class="mt-1 text-[17px] font-black">4 CREW · 116~119</p>
+                  <p class="tear-status mt-1 text-[11px] font-black text-[#15151a]/38">아래를 살짝 당겨도 뜯겨요</p>
                 </div>
-                <div class="grid size-11 place-items-center rounded-full bg-[#9b1b3f] text-[20px] text-white">
-                  <i class="fa-solid fa-baseball"></i>
-                </div>
+                <button id="tearButton" type="button" class="tear-button grid min-w-[58px] place-items-center rounded-full bg-[#15151a] px-4 py-3 text-[13px] font-black text-white" aria-label="티켓 하단 뜯기">
+                  뜯기
+                </button>
               </div>
             </div>
           </article>
@@ -560,8 +764,16 @@
       const noteInput = document.getElementById("noteInput");
       const noteList = document.getElementById("noteList");
       const noteStatus = document.getElementById("noteStatus");
+      const ticketCard = document.getElementById("ticketCard");
+      const ticketStub = document.getElementById("ticketStub");
+      const tearButton = document.getElementById("tearButton");
+      const tearConfetti = document.getElementById("tearConfetti");
       const youtubePreviews = document.querySelectorAll(".youtube-preview");
       const colors = ["#ff375f", "#ff8a21", "#ffc45f", "#ffffff", "#9b1b3f"];
+      const tearColors = ["#efe7dc", "#fffaf1", "#c30452", "#5d1028", "#ffc45f"];
+      let tearStartY = 0;
+      let isPointerTearing = false;
+      let isTorn = false;
 
       const safeJson = async (response) => {
         if (!response.ok) {
@@ -600,6 +812,75 @@
         layer.appendChild(heart);
         window.setTimeout(() => heart.remove(), 1300);
       };
+
+      const makeTearBits = () => {
+        if (!tearConfetti) return;
+
+        for (let i = 0; i < 18; i += 1) {
+          const piece = document.createElement("span");
+          const x = Math.round(Math.random() * 210 - 105);
+          const y = Math.round(Math.random() * 76 + 20);
+          const rotate = Math.round(Math.random() * 160 - 80);
+          const left = Math.round(Math.random() * 72 + 14);
+          const color = tearColors[Math.floor(Math.random() * tearColors.length)];
+
+          piece.className = "tear-piece";
+          piece.style.left = `${left}%`;
+          piece.style.bottom = "74px";
+          piece.style.setProperty("--tear-x", `${x}px`);
+          piece.style.setProperty("--tear-y", `${y}px`);
+          piece.style.setProperty("--tear-r", `${rotate}deg`);
+          piece.style.setProperty("--tear-bg", color);
+
+          tearConfetti.appendChild(piece);
+          window.setTimeout(() => piece.remove(), 920);
+        }
+      };
+
+      const setTicketTorn = (nextTorn) => {
+        if (!ticketCard || !tearButton) return;
+        isTorn = nextTorn;
+
+        ticketCard.classList.remove("is-tearing");
+        if (isTorn) {
+          ticketCard.classList.add("is-tearing", "is-torn");
+          tearButton.textContent = "다시";
+          tearButton.setAttribute("aria-label", "티켓 하단 다시 붙이기");
+          makeTearBits();
+          window.setTimeout(() => ticketCard.classList.remove("is-tearing"), 720);
+        } else {
+          ticketCard.classList.remove("is-torn");
+          tearButton.textContent = "뜯기";
+          tearButton.setAttribute("aria-label", "티켓 하단 뜯기");
+        }
+      };
+
+      tearButton?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        setTicketTorn(!isTorn);
+      });
+
+      ticketStub?.addEventListener("pointerdown", (event) => {
+        isPointerTearing = true;
+        tearStartY = event.clientY;
+        ticketStub.setPointerCapture?.(event.pointerId);
+      });
+
+      ticketStub?.addEventListener("pointermove", (event) => {
+        if (!isPointerTearing || isTorn) return;
+        if (event.clientY - tearStartY > 26) {
+          setTicketTorn(true);
+          isPointerTearing = false;
+        }
+      });
+
+      ticketStub?.addEventListener("pointerup", () => {
+        isPointerTearing = false;
+      });
+
+      ticketStub?.addEventListener("pointercancel", () => {
+        isPointerTearing = false;
+      });
 
       const loadHeart = async () => {
         try {
