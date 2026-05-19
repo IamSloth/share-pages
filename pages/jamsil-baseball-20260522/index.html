@@ -477,10 +477,16 @@
     .post-it {
       background:
         linear-gradient(180deg, rgba(255, 255, 255, .28), transparent 34%),
-        #ffd86d;
+        var(--note-bg, #ffd86d);
+      border: 1px solid var(--note-border, rgba(255, 255, 255, .18));
       box-shadow: 0 16px 28px rgba(0, 0, 0, .24);
+      color: var(--note-ink, #2b2309);
       transform: rotate(var(--tilt));
       transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .post-it-name {
+      color: var(--note-accent, rgba(43, 35, 9, .55));
     }
 
     .post-it:hover {
@@ -895,6 +901,14 @@
       const colors = ["#ff375f", "#ff8a21", "#ffc45f", "#ffffff", "#9b1b3f"];
       const reactions = ["💖", "⚾", "✨", "❤️"];
       const tearColors = ["#efe7dc", "#fffaf1", "#c30452", "#5d1028", "#ffc45f"];
+      const notePalettes = [
+        { bg: "#ffd86d", ink: "#2b2309", accent: "#8a1538", border: "rgba(255,216,109,.42)" },
+        { bg: "#8a1538", ink: "#fff7fb", accent: "#ffd7ec", border: "rgba(255,215,236,.34)" },
+        { bg: "#fff7fb", ink: "#5d1028", accent: "#c30452", border: "rgba(195,4,82,.22)" },
+        { bg: "#c30452", ink: "#ffffff", accent: "#ffd7ec", border: "rgba(255,255,255,.26)" },
+        { bg: "#fff3dc", ink: "#301503", accent: "#f58220", border: "rgba(245,130,32,.28)" },
+        { bg: "#15151a", ink: "#ffffff", accent: "#ffb0c8", border: "rgba(195,4,82,.48)" }
+      ];
       let tearStartY = 0;
       let isPointerTearing = false;
       let isTorn = false;
@@ -1142,15 +1156,20 @@
         noteStatus.textContent = isLocal ? "연결 실패. 이 기기 임시 메모만 표시" : "닉네임 붙인 공유 포스트잇";
         recent.forEach((note, index) => {
           const card = document.createElement("article");
-          card.className = "post-it min-h-[96px] rounded-[12px] p-3 text-[#2b2309]";
+          const palette = notePalettes[index % notePalettes.length];
+          card.className = "post-it min-h-[96px] rounded-[12px] p-3";
           card.style.setProperty("--tilt", index % 2 === 0 ? "-1.5deg" : "1.5deg");
+          card.style.setProperty("--note-bg", palette.bg);
+          card.style.setProperty("--note-ink", palette.ink);
+          card.style.setProperty("--note-accent", palette.accent);
+          card.style.setProperty("--note-border", palette.border);
 
           const text = document.createElement("p");
           text.className = "text-[14px] font-black leading-5";
           text.textContent = note.text;
 
           const meta = document.createElement("p");
-          meta.className = "mt-3 text-[10px] font-black text-[#2b2309]/45";
+          meta.className = "post-it-name mt-3 text-[10px] font-black";
           meta.textContent = cleanName(note.name || "익명");
 
           card.append(text, meta);
