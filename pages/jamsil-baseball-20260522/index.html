@@ -52,22 +52,22 @@
     @keyframes floatHeart {
       0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0) scale(.45) rotate(0deg);
+        transform: translate3d(0, 0, 0) scale(.55) rotate(0deg);
       }
 
       12% {
         opacity: 1;
-        transform: translate3d(calc(var(--heart-x) * .18), -28px, 0) scale(1.15) rotate(calc(var(--heart-r) * .35));
+        transform: translate3d(calc(var(--heart-x) * .18), -20px, 0) scale(1.05) rotate(calc(var(--heart-r) * .35));
       }
 
       54% {
-        opacity: .94;
-        transform: translate3d(calc(var(--heart-x) * .72), -112px, 0) scale(1.5) rotate(calc(var(--heart-r) * .75));
+        opacity: .9;
+        transform: translate3d(calc(var(--heart-x) * .72), -76px, 0) scale(1.22) rotate(calc(var(--heart-r) * .75));
       }
 
       100% {
         opacity: 0;
-        transform: translate3d(var(--heart-x), -218px, 0) scale(1.9) rotate(var(--heart-r));
+        transform: translate3d(var(--heart-x), -128px, 0) scale(1.25) rotate(var(--heart-r));
       }
     }
 
@@ -127,6 +127,24 @@
       }
     }
 
+    @keyframes reactionBump {
+      0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+      }
+
+      22% {
+        transform: translate3d(-3px, 1px, 0) rotate(-1deg);
+      }
+
+      46% {
+        transform: translate3d(4px, -2px, 0) rotate(1.2deg);
+      }
+
+      72% {
+        transform: translate3d(-1px, 1px, 0) rotate(-.45deg);
+      }
+    }
+
     @keyframes mascotTap {
       0%, 100% {
         transform: translateY(0) rotate(var(--tilt, 0deg));
@@ -156,17 +174,17 @@
       }
 
       22% {
-        transform: translate3d(-5px, 7px, 0) rotate(-3.4deg) scale(1);
+        transform: translate3d(-4px, 5px, 0) rotate(-3deg) scale(1);
       }
 
       58% {
         opacity: .98;
-        transform: translate3d(12px, 62px, 0) rotate(9deg) scale(.99);
+        transform: translate3d(9px, 38px, 0) rotate(7deg) scale(.99);
       }
 
       100% {
         opacity: .94;
-        transform: translate3d(15px, 88px, 0) rotate(7.8deg) scale(.985);
+        transform: translate3d(9px, 48px, 0) rotate(5.8deg) scale(.985);
       }
     }
 
@@ -220,14 +238,22 @@
       transform: rotate(-.2deg) translateY(1px) scale(.992);
     }
 
+    .ticket-card.is-tearing,
+    .ticket-card.is-torn {
+      overflow: visible;
+      z-index: 6;
+    }
+
     .ticket-card.is-tearing .ticket-stub {
       animation: stubTear .64s cubic-bezier(.16, .8, .28, 1) forwards;
     }
 
     .ticket-card.is-torn .ticket-stub {
-      box-shadow: 0 18px 35px rgba(0, 0, 0, .28);
+      box-shadow:
+        0 -10px 0 #07080c,
+        0 18px 35px rgba(0, 0, 0, .34);
       opacity: .94;
-      transform: translate3d(15px, 88px, 0) rotate(7.8deg) scale(.985);
+      transform: translate3d(9px, 48px, 0) rotate(5.8deg) scale(.985);
     }
 
     .ticket-card.is-torn .tear-status {
@@ -235,6 +261,9 @@
     }
 
     .ticket-stub {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.2), transparent 28%),
+        #efe7dc;
       cursor: grab;
       border-top: 2px dashed rgba(21, 21, 26, .24);
       touch-action: pan-y;
@@ -303,8 +332,12 @@
       transform: translateY(-2px);
     }
 
+    .reaction-card.is-bumping {
+      animation: reactionBump .42s cubic-bezier(.18, .9, .25, 1);
+    }
+
     .heart-float {
-      animation: floatHeart 1.18s cubic-bezier(.18, .86, .38, 1) forwards;
+      animation: floatHeart .94s cubic-bezier(.18, .86, .38, 1) forwards;
     }
 
     .tape-stage {
@@ -398,12 +431,20 @@
 
     .tape-word.home-word {
       animation: labelGlow 2.8s ease-in-out infinite;
-      color: #fff;
+      background: #fff;
+      border-radius: 999px;
+      color: #c30452;
+      padding: 3px 9px;
+      text-shadow: none;
     }
 
     .tape-word.away-word {
       animation: labelGlow 3.1s ease-in-out infinite;
-      color: #ffd7ec;
+      background: #ffd7ec;
+      border-radius: 999px;
+      color: #5d1028;
+      padding: 3px 9px;
+      text-shadow: none;
     }
 
     .pulse-dot {
@@ -465,6 +506,7 @@
       .ticket-card,
       .heart-button,
       .heart-float,
+      .reaction-card,
       .marquee-track,
       .ticket-stub,
       .tear-piece,
@@ -760,7 +802,7 @@
         </div>
       </section>
 
-      <section class="glass interactive-card relative overflow-hidden rounded-[20px] p-5">
+      <section id="reactionCard" class="glass interactive-card reaction-card relative overflow-hidden rounded-[20px] p-5">
         <div id="heartLayer" class="pointer-events-none absolute inset-0 overflow-hidden"></div>
 
         <div class="relative flex items-center justify-between gap-4">
@@ -836,6 +878,7 @@
       const LOCAL_NOTES = "jamsil-20260522-local-notes";
 
       const button = document.getElementById("heartButton");
+      const reactionCard = document.getElementById("reactionCard");
       const layer = document.getElementById("heartLayer");
       const countEl = document.getElementById("heartCount");
       const heartStatus = document.getElementById("heartStatus");
@@ -850,7 +893,7 @@
       const tearConfetti = document.getElementById("tearConfetti");
       const youtubePreviews = document.querySelectorAll(".youtube-preview");
       const colors = ["#ff375f", "#ff8a21", "#ffc45f", "#ffffff", "#9b1b3f"];
-      const reactions = ["💖", "⚾", "🔥", "✨", "💥", "❤️"];
+      const reactions = ["💖", "⚾", "✨", "❤️"];
       const tearColors = ["#efe7dc", "#fffaf1", "#c30452", "#5d1028", "#ffc45f"];
       let tearStartY = 0;
       let isPointerTearing = false;
@@ -880,9 +923,9 @@
 
       const makeHeart = () => {
         const heart = document.createElement("span");
-        const x = Math.round(Math.random() * 210 - 118);
-        const rotate = Math.round(Math.random() * 120 - 60);
-        const size = Math.round(Math.random() * 18 + 20);
+        const x = Math.round(Math.random() * 118 - 64);
+        const rotate = Math.round(Math.random() * 70 - 35);
+        const size = Math.round(Math.random() * 10 + 18);
         const color = colors[Math.floor(Math.random() * colors.length)];
         const reaction = reactions[Math.floor(Math.random() * reactions.length)];
 
@@ -894,7 +937,15 @@
         heart.textContent = reaction;
 
         layer.appendChild(heart);
-        window.setTimeout(() => heart.remove(), 1450);
+        window.setTimeout(() => heart.remove(), 1000);
+      };
+
+      const bumpReactionCard = () => {
+        if (!reactionCard) return;
+        reactionCard.classList.remove("is-bumping");
+        void reactionCard.offsetWidth;
+        reactionCard.classList.add("is-bumping");
+        window.setTimeout(() => reactionCard.classList.remove("is-bumping"), 460);
       };
 
       const makeTearBits = () => {
@@ -1009,9 +1060,10 @@
         paintCount(optimisticCount);
         setLocalHearts(Math.max(getLocalHearts(), optimisticCount));
         heartStatus.textContent = "좋아, 더 눌러도 됨 🔥";
+        bumpReactionCard();
 
-        for (let i = 0; i < 13; i += 1) {
-          window.setTimeout(makeHeart, i * 28);
+        for (let i = 0; i < 6; i += 1) {
+          window.setTimeout(makeHeart, i * 44);
         }
 
         try {
