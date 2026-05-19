@@ -210,7 +210,10 @@
     }
 
     .tear-button {
+      position: relative;
+      touch-action: manipulation;
       transition: background-color .2s ease, color .2s ease, transform .2s ease;
+      z-index: 5;
     }
 
     .tear-button:hover {
@@ -856,11 +859,21 @@
       };
 
       tearButton?.addEventListener("click", (event) => {
+        event.preventDefault();
         event.stopPropagation();
         setTicketTorn(!isTorn);
       });
 
+      tearButton?.addEventListener("pointerdown", (event) => {
+        event.stopPropagation();
+      });
+
+      tearButton?.addEventListener("pointerup", (event) => {
+        event.stopPropagation();
+      });
+
       ticketStub?.addEventListener("pointerdown", (event) => {
+        if (event.target.closest("#tearButton")) return;
         isPointerTearing = true;
         tearStartY = event.clientY;
         ticketStub.setPointerCapture?.(event.pointerId);
